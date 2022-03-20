@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :bouteilles
   resources :caves
   resources :degustations
-  
+  resources :cuvees
+
 end
