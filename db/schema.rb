@@ -10,10 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_212326) do
+ActiveRecord::Schema.define(version: 2022_03_20_215757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appellations", force: :cascade do |t|
+    t.string "pays"
+    t.string "region"
+    t.string "nom"
+    t.string "couleur"
+    t.string "norme"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bouteilles", force: :cascade do |t|
+    t.bigint "cuvee_id", null: false
+    t.bigint "cave_id", null: false
+    t.string "emplacement1"
+    t.string "emplacement2"
+    t.string "emplacement3"
+    t.date "date_achat"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cave_id"], name: "index_bouteilles_on_cave_id"
+    t.index ["cuvee_id"], name: "index_bouteilles_on_cuvee_id"
+  end
+
+  create_table "caves", force: :cascade do |t|
+    t.string "nom"
+    t.string "localisation"
+    t.integer "capacité"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_caves_on_user_id"
+  end
+
+  create_table "cuvees", force: :cascade do |t|
+    t.bigint "appellation_id", null: false
+    t.string "domaine"
+    t.string "cuvee"
+    t.date "annee"
+    t.float "average_grade"
+    t.float "prix_achat"
+    t.float "prix_actuel"
+    t.date "date_deg_min"
+    t.date "date_deg_max"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appellation_id"], name: "index_cuvees_on_appellation_id"
+  end
+
+  create_table "degustations", force: :cascade do |t|
+    t.bigint "bouteille_id", null: false
+    t.date "date_deg"
+    t.string "plat"
+    t.float "note_cuvee"
+    t.text "commentaire"
+    t.float "note_accord"
+    t.text "commentaire_accord"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bouteille_id"], name: "index_degustations_on_bouteille_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +88,9 @@ ActiveRecord::Schema.define(version: 2022_03_20_212326) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bouteilles", "caves"
+  add_foreign_key "bouteilles", "cuvees"
+  add_foreign_key "caves", "users"
+  add_foreign_key "cuvees", "appellations"
+  add_foreign_key "degustations", "bouteilles"
 end
