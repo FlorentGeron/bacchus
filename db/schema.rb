@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_214414) do
+ActiveRecord::Schema.define(version: 2022_03_20_214850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,21 @@ ActiveRecord::Schema.define(version: 2022_03_20_214414) do
     t.index ["user_id"], name: "index_caves_on_user_id"
   end
 
+  create_table "cuvees", force: :cascade do |t|
+    t.bigint "appellation_id", null: false
+    t.string "domaine"
+    t.string "cuvee"
+    t.date "annee"
+    t.float "average_grade"
+    t.float "prix_achat"
+    t.float "prix_actuel"
+    t.date "date_deg_min"
+    t.date "date_deg_max"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appellation_id"], name: "index_cuvees_on_appellation_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,4 +63,5 @@ ActiveRecord::Schema.define(version: 2022_03_20_214414) do
   end
 
   add_foreign_key "caves", "users"
+  add_foreign_key "cuvees", "appellations"
 end
