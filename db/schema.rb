@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_214850) do
+ActiveRecord::Schema.define(version: 2022_03_20_215207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(version: 2022_03_20_214850) do
     t.string "norme"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "bouteilles", force: :cascade do |t|
+    t.bigint "cuvee_id", null: false
+    t.bigint "cave_id", null: false
+    t.string "emplacement1"
+    t.string "emplacement2"
+    t.string "emplacement3"
+    t.date "date_achat"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cave_id"], name: "index_bouteilles_on_cave_id"
+    t.index ["cuvee_id"], name: "index_bouteilles_on_cuvee_id"
   end
 
   create_table "caves", force: :cascade do |t|
@@ -62,6 +75,8 @@ ActiveRecord::Schema.define(version: 2022_03_20_214850) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bouteilles", "caves"
+  add_foreign_key "bouteilles", "cuvees"
   add_foreign_key "caves", "users"
   add_foreign_key "cuvees", "appellations"
 end
