@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_20_215207) do
+ActiveRecord::Schema.define(version: 2022_03_20_215757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(version: 2022_03_20_215207) do
     t.index ["appellation_id"], name: "index_cuvees_on_appellation_id"
   end
 
+  create_table "degustations", force: :cascade do |t|
+    t.bigint "bouteille_id", null: false
+    t.date "date_deg"
+    t.string "plat"
+    t.float "note_cuvee"
+    t.text "commentaire"
+    t.float "note_accord"
+    t.text "commentaire_accord"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bouteille_id"], name: "index_degustations_on_bouteille_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -79,4 +92,5 @@ ActiveRecord::Schema.define(version: 2022_03_20_215207) do
   add_foreign_key "bouteilles", "cuvees"
   add_foreign_key "caves", "users"
   add_foreign_key "cuvees", "appellations"
+  add_foreign_key "degustations", "bouteilles"
 end
