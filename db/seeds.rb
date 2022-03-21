@@ -10,12 +10,12 @@ require "csv"
 puts "All right, folks! Let's seed!"
 
 puts "destroying all previous records"
-User.destroy_all
-Cave.destroy_all
-Appellation.destroy_all
-Cuvee.destroy_all
-Bouteille.destroy_all
 Degustation.destroy_all
+Bouteille.destroy_all
+Cave.destroy_all
+User.destroy_all
+Cuvee.destroy_all
+Appellation.destroy_all
 
 puts "creating a user"
 me = User.create!(
@@ -46,12 +46,12 @@ sologne = Cave.create!(
   user: me
 )
 
-puts "created #{User.count}  #{'user'.pluralize(User.count)}"
+puts "created #{Cave.count}  #{'user'.pluralize(Cave.count)}"
 
 puts "creating appellations from csv file"
 csv_file = "lib/assets/appellations.csv"
 csv_text = File.read(csv_file)
-csv = CSV.parse(csv_text, headers: true)
+csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
   t = Appellation.new
   t.pays = row['Pays']
@@ -67,15 +67,15 @@ puts "created #{Appellation.count}  #{'appellation'.pluralize(Appellation.count)
 puts "creating cuvees now"
 
 cuvee1 = Cuvee.create!(
-    appelation_id: 24,
-    domaine: "Jean-Pierre Timbaud",
-    cuvee: "Cotes du Nord",
-    annee: Date.new(2011, 2, 5),
-    prix_achat: 14
+  appellation: Appellation.first,
+  domaine: "Jean-Pierre Timbaud",
+  cuvee: "Cotes du Nord",
+  annee: Date.new(2011, 2, 5),
+  prix_achat: 14
 )
 
 cuvee2 = Cuvee.create!(
-  appelation_id: 44,
+  appellation: Appellation.first,
   domaine: "Colonel Fabien",
   cuvee: "Cotes du Sud",
   annee: Date.new(2020, 2, 5),
@@ -83,7 +83,7 @@ cuvee2 = Cuvee.create!(
 )
 
 cuvee3 = Cuvee.create!(
-  appelation_id: 145,
+  appellation: Appellation.last,
   domaine: "Saint Louis",
   cuvee: "Cotes de l'Est",
   annee: Date.new(2019, 2, 5),
@@ -91,7 +91,7 @@ cuvee3 = Cuvee.create!(
 )
 
 cuvee4 = Cuvee.create!(
-  appelation_id: 2845,
+  appellation: Appellation.last,
   domaine: "Jules Verne",
   cuvee: "Cotes de l'Ouest",
   annee: Date.new(2017, 2, 5),
