@@ -1,12 +1,53 @@
 <div class= "container">
   <div class = "search-block">
-  <div class="bacchus-button-filter">Cave</div>
-  <div class="bacchus-button-filter">Couleur</div>
-  <div class="bacchus-button-filter">Région</div>
-  <div class="bacchus-button-filter">Prêt à boire</div>
+    <form novalidate="novalidate" class="simple_form search mb-1" action="/cuvees" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <div class="search-form-control d-flex align-items-end justify-content-between form-group">
+        <div>
+        <input class="form-control string required" type="text" name="search[keyword]" id="search_keyword"/>
+        </div>
+        <button name="button" type="submit" class="bacchus-button-filter">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </form>
+    <form novalidate="novalidate" class="simple_form search mb-1" action="/cuvees" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <div class="search-form-control d-flex align-items-end justify-content-between form-group">
+        <div class="col-2">
+          <label for="search_cave">Cave</label>
+            <select class="form-select form-control" name="search[cave]" id="search_cave" >
+              <option value="">Toutes</option>
+              <%Cave.all.each do |cave|%>
+              <option value=<%="#{cave.nom}"%>><%=cave.nom%></option>
+              <%end%>
+            </select>
+        </div>
+        <div class="col-2">
+          <label for="search_couleur">Couleur</label>
+            <select class="form-select form-control" name="search[couleur]" id="search_couleur" >
+              <option value="">Toutes</option>
+               <% @couleurs.each do |couleur|%>
+              <option value=<%="#{couleur}"%>><%=couleur%></option>
+              <%end%>
+            </select>
+        </div>
+        <div class="col-2">
+          <label for="search_region">Région</label>
+            <select class="form-select form-control" name="search[region]" id="search_region" >
+              <option value="">Toutes</option>
+              <% @regions.each do |region|%>
+              <option value=<%="#{region}"%>><%=region%></option>
+              <%end%>
+            </select>
+        </div>
+        <button name="button" type="submit" class="bacchus-button-filter">
+          Filtrer
+        </button>
+      </div>
+    </form>
   </div>
   <div class = "display-results">
     <% @cuvees.each do |cuvee|%>
+      <%= link_to cuvee_path(cuvee) do %>
       <div class= "cuvee-preview">
         <div class="title-card">
           <%= cuvee.domaine%>
@@ -16,10 +57,15 @@
           <%= cuvee.annee.year%>
           <%= cuvee.appellation.nom%>
           <div class="sticker">
-            <%= cuvee.bouteilles.count%>
+            <% if @search_params[:cave].blank? %>
+              <%=cuvee.bouteilles.count%>
+            <%else %>
+              <%= @cave.bouteilles.where(cuvee: cuvee).count%>
+            <%end%>
           </div>
         </div>
       </div>
+      <%end%>
     <%end%>
   </div>
 </div>

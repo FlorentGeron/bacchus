@@ -1,0 +1,32 @@
+<div class= "modal-container">
+  <div class="modal-section">
+    <div class="title-card"><%= @cuvee.domaine%></div>
+    <%= @cuvee.cuvee%>
+    <%= @cuvee.annee.year%>
+    <%= @cuvee.appellation.nom%>
+  </div>
+  <div class="modal-section">
+    <div class="price">
+      acheté : <%= @cuvee.prix_achat%> €
+      cote actuelle :<%= @cuvee.prix_actuel%> €
+    </div>
+    A déguster entre <%= @cuvee.date_deg_min%> et <%=@cuvee.date_deg_max%>
+  </div>
+  <div class="modal-section">
+    Note Moyenne : <%= @cuvee.average_grade%>
+    Dernière dégustation le
+
+  </div>
+  <div class="modal-section">
+    <%=@cuvee.bouteilles.count%> bouteilles de cette cuvée :
+    <% @cuvee.bouteilles.each do |bouteille|%>
+      <div class="bottle-preview">
+      <div class="title-card"><%=bouteille.cave.nom%></div>
+      <%=bouteille.emplacement1%>
+      <%=bouteille.emplacement2%>
+      <%=bouteille.emplacement3%>
+      <%=bouteille.date_achat%>
+      </div>
+    <%end%>
+  </div>
+</div>
