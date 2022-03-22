@@ -1,0 +1,25 @@
+<div class= "container">
+  <div class = "search-block">
+  <div class="bacchus-button-filter">Cave</div>
+  <div class="bacchus-button-filter">Couleur</div>
+  <div class="bacchus-button-filter">Région</div>
+  <div class="bacchus-button-filter">Prêt à boire</div>
+  </div>
+  <div class = "display-results">
+    <% @cuvees.each do |cuvee|%>
+      <div class= "cuvee-preview">
+        <div class="title-card">
+          <%= cuvee.domaine%>
+        </div>
+        <div class= "cuvee-preview-details">
+          <%= cuvee.cuvee%>
+          <%= cuvee.annee.year%>
+          <%= cuvee.appellation.nom%>
+          <div class="sticker">
+            <%= cuvee.bouteilles.count%>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
