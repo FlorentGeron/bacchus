@@ -5,4 +5,10 @@ class Cuvee < ApplicationRecord
   has_many :degustations, through: :bouteilles
 
   validates :appellation_id, :domaine, :cuvee, :annee, :prix_achat, presence: true
+
+
+def bouteillesaboire
+self.bouteilles.where("bouteilles.statut IS ?", nil)
+end
+
 end
