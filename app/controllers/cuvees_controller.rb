@@ -33,13 +33,13 @@ def search_params
 end
 
 def filter_cuvees
-    cuvees = Cuvee.all.joins(:bouteilles).where("bouteilles.statut IS ?", nil).distinct
-    #cuvees = Cave.find_by("nom ILIKE?", "%#{search_params[:cave]}%").bouteilles.map{|bouteille| bouteille.cuvee}.uniq unless search_params[:cave].blank?
-    cuvees = cuvees.joins(:appellation).where("appellations.nom ILIKE ?", search_params[:keyword]) unless search_params[:keyword].blank?
-    cuvees = cuvees.joins(:caves).where("caves.nom LIKE ?", "%#{search_params[:cave]}%").distinct unless search_params[:cave].blank?
-    cuvees = cuvees.joins(:appellation).where("region LIKE ?", "%#{search_params[:region]}%") unless search_params[:region].blank?
-    cuvees = cuvees.joins(:appellation).where("couleur LIKE ?", "%#{search_params[:couleur]}%") unless search_params[:couleur].blank?
-    cuvees
+  cuvees = Cuvee.all.joins(:bouteilles).where("bouteilles.statut IS ?", nil).distinct
+  #cuvees = Cave.find_by("nom ILIKE?", "%#{search_params[:cave]}%").bouteilles.map{|bouteille| bouteille.cuvee}.uniq unless search_params[:cave].blank?
+  cuvees = cuvees.joins(:appellation).where("appellations.nom ILIKE ?", "%#{search_params[:keyword]}%") unless search_params[:keyword].blank?
+  cuvees = cuvees.joins(:caves).where("caves.nom LIKE ?", "#{search_params[:cave]}").distinct unless search_params[:cave].blank?
+  cuvees = cuvees.joins(:appellation).where("region LIKE ?", "#{search_params[:region]}") unless search_params[:region].blank?
+  cuvees = cuvees.joins(:appellation).where("couleur LIKE ?", "#{search_params[:couleur]}") unless search_params[:couleur].blank?
+  cuvees
   end
 
 end
