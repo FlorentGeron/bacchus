@@ -9,3 +9,31 @@
 .title-card {
   font-weight: bolder;
 }
+
+.icon-link{
+  height: 36px;
+  width: auto;
+  margin-left: 8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  color: $bacchus-background;
+}
+
+.bottle-details {
+  display:flex;
+  justify-content: space-between;
+}
+
+.buttons-links {
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  //width: 200px;
+}

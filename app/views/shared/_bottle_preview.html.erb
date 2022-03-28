@@ -1,0 +1,22 @@
+<div class="bottle-preview">
+  <div class="title-card"><%=bouteille.cave.nom%></div>
+  <div class="bottle-details">
+    <div class="localisation-fields">
+      <%=bouteille.emplacement1%>
+      <%=bouteille.emplacement2%>
+      <%=bouteille.emplacement3%>
+      <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+    </div>
+    <div class="buttons-links">
+      <%=link_to new_bouteille_degustation_path(bouteille) do%>
+        <%=image_tag asset_path("pen_red"), class:"icon-link"%>
+      <%end%>
+      <%= simple_form_for(bouteille) do |f|%>
+        <%= f.input :statut, label:false, input_html: {:"class" => "d-none", :"value"=>"mise de côté"} %>
+        <button type="submit" style = "width: auto">
+          <%=image_tag asset_path("bottle_export"), class:"icon-link"%>
+        </button>
+      <%end%>
+    </div>
+  </div>
+</div>
