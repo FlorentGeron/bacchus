@@ -17,9 +17,9 @@
       <%=@degustations.count%> <%="dégustation".pluralize(@degustations.count)%> (note moyenne : <%= @cuvee.average_grade%>)
       <%@degustations.each do |degustation|%>
         <div class="degustation-preview">
-         <div class="title-card"><%=degustation.date_deg%></div>
+         <div class="title-card"><%=degustation.date_deg.strftime("%d.%m.%y")%></div>
         <%=degustation.note_cuvee%>
-        <%=degustation.commentaire%>
+        "<em><%=degustation.commentaire%></em>"
         </div>
       <%end%>
     <%else%>
@@ -27,15 +27,28 @@
     <%end%>
   </div>
   <div class="modal-section">
-    <%=@cuvee.bouteillesaboire.count%> <%="bouteille".pluralize(@cuvee.bouteilles.count)%>
-    <% @cuvee.bouteillesaboire.each do |bouteille|%>
-      <div class="bottle-preview">
-        <div class="title-card"><%=bouteille.cave.nom%></div>
-        <%=bouteille.emplacement1%>
-        <%=bouteille.emplacement2%>
-        <%=bouteille.emplacement3%>
-        <%=bouteille.date_achat%>
-      </div>
+    <% if @cave.blank? %>
+      <%=@cuvee.bouteillesaboire.count%> <%="bouteille".pluralize(@cuvee.bouteillesaboire.count)%>
+      <% @cuvee.bouteillesaboire.each do |bouteille|%>
+        <div class="bottle-preview">
+          <div class="title-card"><%=bouteille.cave.nom%></div>
+          <%=bouteille.emplacement1%>
+          <%=bouteille.emplacement2%>
+          <%=bouteille.emplacement3%>
+          <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+        </div>
+      <%end%>
+    <%else%>
+      <%= @cave.bouteillesaboire.where(cuvee: @cuvee).count%> <%="bouteille".pluralize(@cave.bouteillesaboire.where(cuvee: cuvee).count)%>
+      <%= @cave.bouteillesaboire.where(cuvee: @cuvee).each do |bouteille|%>
+        <div class="bottle-preview">
+          <div class="title-card"><%=bouteille.cave.nom%></div>
+          <%=bouteille.emplacement1%>
+          <%=bouteille.emplacement2%>
+          <%=bouteille.emplacement3%>
+          <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+        </div>
+      <%end%>
     <%end%>
   </div>
 </div>
