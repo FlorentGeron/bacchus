@@ -32,6 +32,11 @@
               <%end%>
             </select>
         </div>
+        <%= link_to cuvees_path do%>
+          <button name="button" class="bacchus-button-filter">
+            <i class="fas fa-redo"></i>
+          </button>
+        <%end%>
         <button name="button" type="submit" class="bacchus-button-filter">
           <i class="fas fa-search"></i>
         </button>
@@ -39,25 +44,29 @@
     </form>
   </div>
   <div class = "display-results">
-    <% @cuvees.each do |cuvee|%>
-      <%= link_to cuvee_path(cuvee) do %>
-      <div class= "cuvee-preview">
-        <div class="title-card">
-          <%= cuvee.domaine%>
-        </div>
-        <div class= "cuvee-preview-details">
-          <%= cuvee.cuvee%>
-          <%= cuvee.annee.year%>
-          <%= cuvee.appellation.nom%>
-          <div class="sticker">
-            <% if @search_params[:cave].blank? %>
-              <%=cuvee.bouteillesaboire.count%>
-            <%else %>
-              <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
-            <%end%>
+    <% if @cuvees.blank?%>
+      Aucune cuvée ne correspond à ces critères
+    <%else%>
+      <% @cuvees.each do |cuvee|%>
+        <%= link_to cuvee_path(cuvee) do %>
+        <div class= "cuvee-preview">
+          <div class="title-card">
+            <%= cuvee.domaine%>
+          </div>
+          <div class= "cuvee-preview-details">
+            <%= cuvee.cuvee%>
+            <%= cuvee.annee.year%>
+            <%= cuvee.appellation.nom%>
+            <div class="sticker">
+              <% if @search_params[:cave].blank? %>
+                <%=cuvee.bouteillesaboire.count%>
+              <%else %>
+                <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
+              <%end%>
+            </div>
           </div>
         </div>
-      </div>
+        <%end%>
       <%end%>
     <%end%>
   </div>
