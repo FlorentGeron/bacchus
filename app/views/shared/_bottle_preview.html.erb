@@ -4,8 +4,8 @@
           <%=bouteille.emplacement2%>
           <%=bouteille.emplacement3%>
           <%=bouteille.date_achat.strftime("%d.%m.%y")%>
-          <%link_to new_bouteille_degustation_path do %>%
-          <%= image_tag asset_path("pen_red")%>
+          <%=link_to new_bouteille_degustation_path(bouteille) do %>
+          <%= image_tag asset_path("pen_red"), class: "icon-link"%>
           <%end%>
-          <%=image_tag asset_path("bottle_export")%>
+          <%=image_tag asset_path("bottle_export"), class: "icon-link"%>
         </div>
