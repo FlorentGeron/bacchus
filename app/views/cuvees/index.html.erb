@@ -1,4 +1,4 @@
-<div class= "container">
+<div class= "container" data-controller = "cuvee-modal">
   <div class = "search-block">
     <form novalidate="novalidate" class="simple_form search mb-1" action="/cuvees" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
       <div class="search-form-control d-flex align-items-end justify-content-between form-group">
@@ -49,7 +49,7 @@
     <%else%>
       <% @cuvees.each do |cuvee|%>
         <%= link_to cuvee_path(cuvee) do %>
-        <div class= "cuvee-preview">
+        <div class= "cuvee-preview" data-action= "click->cuvee-modal#openCuveeModal">
           <div class="title-card">
             <%= cuvee.domaine%>
           </div>
@@ -67,6 +67,9 @@
           </div>
         </div>
         <%end%>
+        <div class= "modal-overlay d-none" data-cuvee-modal-target= "closedModal">
+          <%=render "shared/cuveemodal", cuvee: cuvee %>
+        </div>
       <%end%>
     <%end%>
   </div>
