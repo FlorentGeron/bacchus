@@ -30,23 +30,12 @@
     <% if @cave.blank? %>
       <%=@cuvee.bouteillesaboire.count%> <%="bouteille".pluralize(@cuvee.bouteillesaboire.count)%>
       <% @cuvee.bouteillesaboire.each do |bouteille|%>
-        <div class="bottle-preview">
-          <div class="title-card"><%=bouteille.cave.nom%></div>
-          <%=bouteille.emplacement1%>
-          <%=bouteille.emplacement2%>
-          <%=bouteille.emplacement3%>
-          <%=bouteille.date_achat.strftime("%d.%m.%y")%>
-        </div>
+        <%=render 'shared/bottle_preview', bouteille: bouteille %>
       <%end%>
     <%else%>
       <%= @cave.bouteillesaboire.where(cuvee: @cuvee).count%> <%="bouteille".pluralize(@cave.bouteillesaboire.where(cuvee: cuvee).count)%>
       <%= @cave.bouteillesaboire.where(cuvee: @cuvee).each do |bouteille|%>
-        <div class="bottle-preview">
-          <div class="title-card"><%=bouteille.cave.nom%></div>
-          <%=bouteille.emplacement1%>
-          <%=bouteille.emplacement2%>
-          <%=bouteille.emplacement3%>
-          <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+        <%=render 'shared/bottle_preview', bouteille: bouteille %>
         </div>
       <%end%>
     <%end%>

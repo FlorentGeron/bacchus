@@ -1,2 +1,4 @@
 class BouteillesController < ApplicationController
+
+
 end
