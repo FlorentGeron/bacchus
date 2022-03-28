@@ -1,0 +1,8 @@
+<div class="bottom-bar d-flex flex-row justify-content-center px-3">
+  <% if user_signed_in? %>
+      <%= link_to cuvees_path, class: "icon-link" do %>
+        <%= image_tag('cog-icon.png')%>
+        <p class="picture-caption">Accueil</p>
+      <% end %>
+  <% end %>
+</div>
