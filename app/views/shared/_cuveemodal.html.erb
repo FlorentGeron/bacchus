@@ -1,4 +1,4 @@
-<div class= "modal-container">
+<div class= "modal-container d-none" data-cuvee-modal-target="openModal">
   <div class="modal-section">
      <div class="bacchus-button-filter" data-action= "click->cuvee-modal#closeModal">Retour</div>
   </div>
@@ -37,9 +37,8 @@
       <%end%>
     <%else%>
       <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%> <%="bouteille".pluralize(@cave.bouteillesaboire.where(cuvee: cuvee).count)%>
-      <%= @cave.bouteillesaboire.where(cuvee: cuvee).each do |bouteille|%>
+      <% @cave.bouteillesaboire.where(cuvee: cuvee).each do |bouteille|%>
         <%=render 'shared/bottle_preview', bouteille: bouteille %>
-        </div>
       <%end%>
     <%end%>
   </div>

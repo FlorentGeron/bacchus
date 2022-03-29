@@ -10,18 +10,21 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "closedModal" ]
+  static targets = [ "closedModal", "openModal" ]
 
   connect() {
     console.log('Hello, Stimulus!');
   }
 
-  openCuveeModal(e) {
-  e.preventDefault();
-  this.closedModalTarget.classList.remove('d-none')
+  openCuveeModal() {
+  this.closedModalTarget.classList.remove('d-none');
+  this.openModalTarget.classList.remove('d-none');
+  console.log("done opening")
   }
 
-  closeModal(e) {
-    this.closedModalTarget.classList.add('d-none')
+  closeModal() {
+    this.openModalTarget.classList.add('d-none');
+    this.closedModalTarget.classList.add('d-none');
+    console.log("done closing");
   }
 }
