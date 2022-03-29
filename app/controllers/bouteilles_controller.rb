@@ -24,11 +24,11 @@ class BouteillesController < ApplicationController
   end
 
   def index
-    @bouteilles = Bouteille.where(statut: 'mise de côté')
+    @bouteilles = Bouteille.where(statut: 'mise de côté').order(updated_at: :desc)
   end
 
   def update
-    @bouteille = Bouteille.find_by(params[:bouteille_id])
+    @bouteille = Bouteille.find(params[:id])
     @cuvee = @bouteille.cuvee
     if @bouteille.update(bouteille_params)
       flash[:alert] = "Statut mis à jour"
@@ -41,7 +41,7 @@ class BouteillesController < ApplicationController
 private
 
   def bouteille_params
-    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat,)
+    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat)
   end
 
   def create_params
