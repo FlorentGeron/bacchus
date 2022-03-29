@@ -6,7 +6,7 @@ class Bouteille < ApplicationRecord
   validates :cuvee_id, :cave_id, :date_achat, presence: true
 
   def extract
-    self.statut = "mise de côté"
+    self.statut = "à boire"
   end
 
 end

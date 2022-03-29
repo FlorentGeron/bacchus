@@ -48,23 +48,23 @@
     <%else%>
       <% @cuvees.each do |cuvee|%>
         <%= link_to cuvee_path(cuvee) do %>
-        <div class= "cuvee-preview" data-action= "click->cuvee-modal#openCuveeModal">
-          <div class="title-card">
-            <%= cuvee.domaine%>
-          </div>
-          <div class= "cuvee-preview-details">
-            <%= cuvee.cuvee%>
-            <%= cuvee.annee.year%>
-            <%= cuvee.appellation.nom%>
-            <div class="sticker">
-              <% if @search_params[:cave].blank? %>
-                <%=cuvee.bouteillesaboire.count%>
-              <%else %>
-                <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
-              <%end%>
+          <div class= "cuvee-preview" data-action= "click->cuvee-modal#openCuveeModal">
+            <div class="title-card">
+              <%= cuvee.domaine%>
+            </div>
+            <div class= "cuvee-preview-details">
+              <%= cuvee.cuvee%>
+              <%= cuvee.annee.year%>
+              <%= cuvee.appellation.nom%>
+              <div class="sticker">
+                <% if @search_params[:cave].blank? %>
+                  <%=cuvee.bouteillesaboire.count%>
+                <%else %>
+                  <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
+                <%end%>
+              </div>
             </div>
           </div>
-        </div>
         <%end%>
         <div class= "modal-overlay d-none" data-cuvee-modal-target= "closedModal">
           <%=render "shared/cuveemodal", cuvee: cuvee %>

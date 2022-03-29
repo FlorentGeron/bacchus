@@ -105,70 +105,81 @@ puts "creating Bouteilles now!"
 bouteille1 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee1,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 bouteille2 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee1,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 bouteille3 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee1,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 bouteille4 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee1,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 bouteille5 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee1,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 bouteille6 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee2,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 bouteille7 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee3,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 bouteille8 = Bouteille.create!(
   cave: sologne,
   cuvee: cuvee3,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "à boire"
 )
 
 
 bouteille9 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee4,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "mise de côté"
 )
 
 
 bouteille10 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee4,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "mise de côté"
 )
 
 
 bouteille11 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee4,
-  date_achat: Date.new(2022, 1, 1)
+  date_achat: Date.new(2022, 1, 1),
+  statut: "mise de côté"
 )
 
 puts "created #{Bouteille.count}  #{'bouteille'.pluralize(Bouteille.count)}"
