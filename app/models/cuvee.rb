@@ -8,7 +8,7 @@ class Cuvee < ApplicationRecord
 
 
 def bouteillesaboire
-self.bouteilles.where("bouteilles.statut IS ?", nil)
+self.bouteilles.where("bouteilles.statut = ?", "mise de côté")
 end
 
 end

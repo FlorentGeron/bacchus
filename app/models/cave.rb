@@ -6,7 +6,7 @@ class Cave < ApplicationRecord
   validates :nom, :user_id, presence: true
 
 def bouteillesaboire
-  self.bouteilles.where("bouteilles.statut IS ?", nil)
+  self.bouteilles.where("bouteilles.statut = ?", "mise de côté")
 end
 
 end
