@@ -19,6 +19,7 @@ export default class extends Controller {
   openCuveeModal() {
   this.closedModalTarget.classList.remove('d-none');
   this.openModalTarget.classList.remove('d-none');
+  console.log("done opening")
   }
 
   closeModal() {

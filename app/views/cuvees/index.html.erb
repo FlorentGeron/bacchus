@@ -47,11 +47,11 @@
       Aucune cuvée ne correspond à ces critères
     <%else%>
       <% @cuvees.each do |cuvee|%>
-          <div class= "cuvee-preview" data-controller = "cuvee-modal" data-action= "click->cuvee-modal#openCuveeModal">
+          <div class= "cuvee-preview" data-controller = "cuvee-modal">
             <div class="title-card">
               <%= cuvee.domaine%>
             </div>
-            <div class= "cuvee-preview-details">
+            <div class= "cuvee-preview-details" data-action= "click->cuvee-modal#openCuveeModal">
               <%= cuvee.cuvee%>
               <%= cuvee.annee.year%>
               <%= cuvee.appellation.nom%>
@@ -62,9 +62,9 @@
                   <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
                 <%end%>
               </div>
-              <div class= "modal-overlay d-none" data-cuvee-modal-target= "closedModal">
-                <%=render "shared/cuveemodal", cuvee: cuvee %>
-              </div>
+            </div>
+            <div class= "modal-overlay d-none" data-cuvee-modal-target= "closedModal">
+              <%=render "shared/cuveemodal", cuvee: cuvee %>
             </div>
           </div>
       <%end%>
