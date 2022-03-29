@@ -16,15 +16,14 @@ export default class extends Controller {
     console.log('Hello, Stimulus!');
   }
 
-  openCuveeModal(e) {
-  e.preventDefault();
-  this.closedModalTarget.classList.toggle('d-none')
-  this.openModalTarget.classList.toggle('d-none')
+  openCuveeModal() {
+  this.closedModalTarget.classList.remove('d-none');
+  this.openModalTarget.classList.remove('d-none');
   }
 
-  closeModal(e) {
-    this.openModalTarget.classList.toggle('d-none')
-    this.closedModalTarget.classList.toggle('d-none')
-    console.log("done closing")
+  closeModal() {
+    this.openModalTarget.classList.add('d-none');
+    this.closedModalTarget.classList.add('d-none');
+    console.log("done closing");
   }
 }

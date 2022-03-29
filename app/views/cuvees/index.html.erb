@@ -47,7 +47,6 @@
       Aucune cuvée ne correspond à ces critères
     <%else%>
       <% @cuvees.each do |cuvee|%>
-        <%= link_to cuvee_path(cuvee) do %>
           <div class= "cuvee-preview" data-controller = "cuvee-modal" data-action= "click->cuvee-modal#openCuveeModal">
             <div class="title-card">
               <%= cuvee.domaine%>
@@ -68,7 +67,6 @@
               </div>
             </div>
           </div>
-        <%end%>
       <%end%>
     <%end%>
   </div>

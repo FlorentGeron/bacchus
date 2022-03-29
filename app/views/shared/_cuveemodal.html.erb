@@ -39,7 +39,6 @@
       <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%> <%="bouteille".pluralize(@cave.bouteillesaboire.where(cuvee: cuvee).count)%>
       <% @cave.bouteillesaboire.where(cuvee: cuvee).each do |bouteille|%>
         <%=render 'shared/bottle_preview', bouteille: bouteille %>
-        </div>
       <%end%>
     <%end%>
   </div>
