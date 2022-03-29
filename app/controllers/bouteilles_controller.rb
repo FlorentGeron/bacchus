@@ -1,5 +1,11 @@
 class BouteillesController < ApplicationController
 
+  def new
+    @bouteille = Bouteille.new
+    @cuvees = Cuvee.all
+    @caves = current_user.caves
+  end
+
   def index
     @bouteilles = Bouteille.where(statut: 'mise de côté')
   end

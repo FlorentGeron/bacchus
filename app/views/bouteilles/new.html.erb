@@ -1,2 +1,11 @@
 <div class= "container">
+<%= simple_form_for(@bouteille) do |f|%>
+  <%=f.input :cuvee, collection: @cuvees%>
+  <%=f.input  :date_achat, as: :date, html5: true%>
+  <%=f.input :cave, collection: @caves%>
+  <%= f.input :emplacement1 %>
+  <%= f.input :emplacement2 %>
+  <%= f.input :emplacement3 %>
+  <%= f.submit %>
+<%end%>
 </div>
