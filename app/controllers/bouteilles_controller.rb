@@ -1,5 +1,9 @@
 class BouteillesController < ApplicationController
 
+  def index
+    @bouteilles = Bouteille.where(statut: 'mise de côté')
+  end
+
   def update
     @bouteille = Bouteille.find_by(params[:bouteille_id])
     @cuvee = @bouteille.cuvee
