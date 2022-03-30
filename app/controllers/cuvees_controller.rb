@@ -1,5 +1,14 @@
 class CuveesController < ApplicationController
 
+def new
+@cuvee = Cuvee.new
+@appellations = Appellation.all.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
+end
+
+def create
+
+end
+
 def index
 @search_params = {}
 @couleurs = Appellation.all.map(&:couleur).uniq
@@ -42,6 +51,6 @@ def filter_cuvees
   cuvees = cuvees.joins(:appellation).where("cuvees.appellation.region LIKE ?", "#{search_params[:region]}") unless search_params[:region].blank?
   cuvees = cuvees.joins(:appellation).where("cuvees.appellation.couleur LIKE ?", "#{search_params[:couleur]}") unless search_params[:couleur].blank?
   cuvees
-  end
+end
 
 end
