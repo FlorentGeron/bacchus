@@ -51,6 +51,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # chase the n+1 queries and avoid slowing down the app
+  gem 'bullet'
 end
 
 group :test do
