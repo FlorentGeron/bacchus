@@ -1,0 +1,13 @@
+<div class= "container">
+<%= simple_form_for(@cuvee) do |f|%>
+  <%=f.input :appellation, collection: @appellations%>
+  <%=f.input  :domaine%>
+  <%=f.input :cuvee%>
+  <%= f.input :annee%>
+  <%= f.input :prix_achat%>
+  <%= f.input :date_deg_min %>
+  <%= f.input :date_deg_max%>
+  <%= f.submit %>
+<%end%>
+</div>
+
