@@ -2,7 +2,13 @@ class BouteillesController < ApplicationController
 
   def new
     @bouteille = Bouteille.new
-    @cuvees = Cuvee.all.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
+    @search_params = {}
+    if search_params.present?
+      @search_params = search_params
+      @cuveesforsearch = filter_cuvees.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
+    else
+      @cuveesforsearch = ["Trop de résultats, merci d'affiner votre recherche"]
+    end
     @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
   end
 
@@ -16,7 +22,7 @@ class BouteillesController < ApplicationController
         emplacement1: bouteille_params[:emplacement1],
         emplacement2: bouteille_params[:emplacement2],
         emplacement3: bouteille_params[:emplacement3],
-        date_achat: bouteille_params[:date_achat]
+        date_achat: bouteille_params[:date_achat],
         prix: bouteille_params[:prix].to_i
       )
       @bouteille.save
@@ -49,5 +55,17 @@ private
     if params[:create]
       params.require(:create).permit(:number)
     end
+  end
+
+  def search_params
+    if params[:search]
+      params.require(:search).permit(
+        :keyword
+      )
+    end
+  end
+
+  def filter_cuvees
+    cuvees = Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "#{search_params[:keyword]}", "#{search_params[:keyword]}") unless search_params[:keyword].blank?
   end
 end
