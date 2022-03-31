@@ -71,7 +71,7 @@ cuvee1 = Cuvee.create!(
   domaine: "Jean-Pierre Timbaud",
   cuvee: "Cotes du Nord",
   annee: Date.new(2011, 2, 5),
-  prix_achat: 14
+
 )
 
 cuvee2 = Cuvee.create!(
@@ -106,56 +106,64 @@ bouteille1 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee1,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 14
 )
 
 bouteille2 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee1,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 14
 )
 
 bouteille3 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee1,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 16
 )
 
 bouteille4 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee1,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 18
 )
 
 bouteille5 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee1,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 18
 )
 
 bouteille6 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee2,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 24
 )
 
 bouteille7 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee3,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 32
 )
 
 bouteille8 = Bouteille.create!(
   cave: sologne,
   cuvee: cuvee3,
   date_achat: Date.new(2022, 1, 1),
-  statut: "à boire"
+  statut: "à boire",
+  prix: 48
 )
 
 
@@ -163,7 +171,8 @@ bouteille9 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee4,
   date_achat: Date.new(2022, 1, 1),
-  statut: "mise de côté"
+  statut: "mise de côté",
+  prix: 12
 )
 
 
@@ -171,7 +180,8 @@ bouteille10 = Bouteille.create!(
   cave: paris,
   cuvee: cuvee4,
   date_achat: Date.new(2022, 1, 1),
-  statut: "mise de côté"
+  statut: "mise de côté",
+  prix: 14
 )
 
 
@@ -179,7 +189,8 @@ bouteille11 = Bouteille.create!(
   cave: orleans,
   cuvee: cuvee4,
   date_achat: Date.new(2022, 1, 1),
-  statut: "mise de côté"
+  statut: "mise de côté",
+  prix: 15
 )
 
 puts "created #{Bouteille.count}  #{'bouteille'.pluralize(Bouteille.count)}"

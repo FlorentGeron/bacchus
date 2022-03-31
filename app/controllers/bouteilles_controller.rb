@@ -2,8 +2,17 @@ class BouteillesController < ApplicationController
 
   def new
     @bouteille = Bouteille.new
-    @cuvees = Cuvee.all.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
+    @search_params = {}
+    if params[:keyword].present?
+      @search_params = params[:keyword]
+      @cuveesforsearch = filter_cuvees.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
+    end
     @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'shared/formcuvee.html', locals: { cuveesforsearch: @cuveesforsearch } }
+    end
   end
 
   def create
@@ -16,7 +25,8 @@ class BouteillesController < ApplicationController
         emplacement1: bouteille_params[:emplacement1],
         emplacement2: bouteille_params[:emplacement2],
         emplacement3: bouteille_params[:emplacement3],
-        date_achat: bouteille_params[:date_achat]
+        date_achat: bouteille_params[:date_achat],
+        prix: bouteille_params[:prix].to_i
       )
       @bouteille.save
     end
@@ -41,12 +51,24 @@ class BouteillesController < ApplicationController
 private
 
   def bouteille_params
-    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat)
+    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix)
   end
 
   def create_params
     if params[:create]
       params.require(:create).permit(:number)
     end
+  end
+
+  def search_params
+    if params[:search]
+      params.require(:search).permit(
+        :keyword
+      )
+    end
+  end
+
+  def filter_cuvees
+    cuvees = Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%") unless params[:keyword].blank?
   end
 end
