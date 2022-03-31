@@ -3,13 +3,16 @@ class BouteillesController < ApplicationController
   def new
     @bouteille = Bouteille.new
     @search_params = {}
-    if search_params.present?
-      @search_params = search_params
+    if params[:keyword].present?
+      @search_params = params[:keyword]
       @cuveesforsearch = filter_cuvees.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
-    else
-      @cuveesforsearch = ["Trop de résultats, merci d'affiner votre recherche"]
     end
     @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'shared/formcuvee.html', locals: { cuveesforsearch: @cuveesforsearch } }
+    end
   end
 
   def create
@@ -66,6 +69,6 @@ private
   end
 
   def filter_cuvees
-    cuvees = Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "#{search_params[:keyword]}", "#{search_params[:keyword]}") unless search_params[:keyword].blank?
+    cuvees = Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%") unless params[:keyword].blank?
   end
 end
