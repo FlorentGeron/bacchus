@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["searchInput", "form", "formFiltered" ]
+  static targets = ["searchInput", "form", "formFiltered", "createNewCuveeFromExisting" ]
 
   connect() {
     console.log("Hello, controller");
@@ -17,4 +17,13 @@ export default class extends Controller {
   })
 }
 
+  proposeyear() {
+    console.log("received a click")
+    const url = `${this.formTarget.action}/renderbuttons`
+    fetch(url, { headers: { 'Accept': 'text/plain' } })
+      .then(response => response.text())
+      .then((data) => {
+        this.createNewCuveeFromExistingTarget.outerHTML = data;
+    });
+}
 }
