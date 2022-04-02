@@ -17,9 +17,9 @@ export default class extends Controller {
   })
 }
 
-  proposeyear() {
+  proposeyear(e) {
     console.log("received a click")
-    const url = `${this.formTarget.action}/renderbuttons`
+    const url = `${this.formTarget.action}/renderbuttons?cuveeref=${e.currentTarget.value}`
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then((data) => {

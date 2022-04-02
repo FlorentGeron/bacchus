@@ -1,8 +1,17 @@
 class CuveesController < ApplicationController
 
 def new
-  @cuvee = Cuvee.new
-  @appellations = Appellation.all.map { |appellation| ["#{appellation.nom}", appellation.id] }
+  if params[:format].present?
+    @cuveeref = Cuvee.find(params[:format].to_i)
+    @cuvee = Cuvee.new(
+      appellation: @cuveeref.appellation,
+      domaine: @cuveeref.domaine,
+      cuvee: @cuveeref.cuvee
+    )
+  else
+    @cuvee = Cuvee.new
+    @appellations = Appellation.all.map { |appellation| ["#{appellation.nom}", appellation.id] }
+  end
 end
 
 def create
