@@ -4,7 +4,7 @@ def new
   if params[:format].present?
     @cuveeref = Cuvee.find(params[:format].to_i)
     @cuvee = Cuvee.new(
-      appellation: @cuveeref.appellation,
+      appellation_id: @cuveeref.appellation_id,
       domaine: @cuveeref.domaine,
       cuvee: @cuveeref.cuvee
     )
@@ -16,6 +16,7 @@ end
 
 def create
   @cuvee = Cuvee.new(cuvee_params)
+  @cuvee.appellation = Appellation.find(cuvee_params[:appellation].to_i)
   if @cuvee.save
     flash[:alert] = "Nouvelle cuvée!"
   redirect_to new_bouteille_path

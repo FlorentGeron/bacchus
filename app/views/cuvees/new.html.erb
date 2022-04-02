@@ -1,8 +1,8 @@
 <div class= "container">
 <%= simple_form_for(@cuvee) do |f|%>
-  <%=f.input :appellation, collection: @appellations, selected:@cuveeref.appellation%>
-  <%=f.input  :domaine, value: @cuveeref.domaine%>
-  <%=f.input :cuvee, selected: @cuveeref.cuvee%>
+  <%=f.input :appellation, collection: @appellations, as: :hidden%>
+  <%=f.input  :domaine, as: :hidden%>
+  <%=f.input :cuvee, as: :hidden%>
   <%= f.input :annee%>
   <%= f.input :prix_achat%>
   <%= f.input :date_deg_min %>
