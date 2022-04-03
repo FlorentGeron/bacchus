@@ -11,13 +11,14 @@
     <%= simple_form_for(@bouteille) do |f|%>
       <%=f.input :cuvee, label: 'Dernière cuvée créée', collection: @cuveesforsearch, input_html: {:"data-action"=>"input->display-form#proposeyear"}, as: :radio_buttons%>
       <div class ="d-none" data-display-form-target = "revealFields">
+        Nombre de bouteilles:
+        <input class="form-control string required" type="integer" name="create[number]" id="number_create" />
         <%=f.input  :date_achat, as: :date, html5: true%>
         <%=f.input :cave, collection: @caves%>
         <%= f.input :emplacement1 %>
         <%= f.input :emplacement2 %>
         <%= f.input :emplacement3 %>
         <%= f.input :prix%>
-        <input class="form-control string required" type="integer" name="create[number]" id="number_create" />
         <%= f.submit %>
       </div>
     <%end%>
@@ -25,7 +26,7 @@
 
   <div data-display-form-target = "createNewCuveeFromExisting">
   Pas dans la liste ?
-  <%= link_to new_cuvee_path do%>
+  <%= link_to appellations_path do%>
         <i class="fas fa-plus-circle"></i>
       <%end%>
   </div>

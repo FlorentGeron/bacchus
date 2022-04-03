@@ -29,6 +29,7 @@ export default class extends Controller {
 
   nextfields() {
    this.revealFieldsTarget.classList.remove("d-none");
+   this.createNewCuveeFromExistingTarget.innerHTML = "";
   }
 
 }
