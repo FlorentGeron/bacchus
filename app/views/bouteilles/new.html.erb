@@ -1,17 +1,33 @@
 <div class= "container" data-controller = "display-form">
-Merci de choisir un domaine et une cuvée :
+  Merci de choisir un domaine et une cuvée :
 
 
-<%= simple_form_for :search, url: new_bouteille_path, method: "GET", html: { class: 'form-inline', :"data-display-form-target"=> "form" }, remote: true do |f|%>
-  <%= f.input :keyword, input_html: {value: "", :"data-action"=>"keyup->display-form#updatecuvee", :"data-display-form-target"=> "searchInput"} %>
-<% end %>
+  <%= simple_form_for :search, url: new_bouteille_path, method: "GET", html: { class: 'form-inline', :"data-display-form-target"=> "form" }, remote: true do |f|%>
+    <%= f.input :keyword, input_html: {value: "", :"data-action"=>"keyup->display-form#updatecuvee", :"data-display-form-target"=> "searchInput"} %>
+  <% end %>
 
 
-<div data-display-form-target = "formFiltered">
-</div>
-
-Pas dans la liste ?
- <%= link_to new_cuvee_path do%>
-      <i class="fas fa-plus-circle"></i>
+  <div data-display-form-target = "formFiltered">
+    <%= simple_form_for(@bouteille) do |f|%>
+      <%=f.input :cuvee, label: 'Dernière cuvée créée', collection: @cuveesforsearch, input_html: {:"data-action"=>"input->display-form#proposeyear"}, as: :radio_buttons%>
+      <div class ="d-none" data-display-form-target = "revealFields">
+        Nombre de bouteilles:
+        <input class="form-control string required" type="integer" name="create[number]" id="number_create" />
+        <%=f.input  :date_achat, as: :date, html5: true%>
+        <%=f.input :cave, collection: @caves%>
+        <%= f.input :emplacement1 %>
+        <%= f.input :emplacement2 %>
+        <%= f.input :emplacement3 %>
+        <%= f.input :prix%>
+        <%= f.submit %>
+      </div>
     <%end%>
+  </div>
+
+  <div data-display-form-target = "createNewCuveeFromExisting">
+  Pas dans la liste ?
+  <%= link_to appellations_path do%>
+        <i class="fas fa-plus-circle"></i>
+      <%end%>
+  </div>
 </div>
