@@ -1,0 +1,5 @@
+<div data-cuvee-form-target="formFiltered">
+  <%= simple_form_for(@cuvee) do |f|%>
+    <%=f.input :appellation, label: false, collection: appellations, as: :radio_buttons%>
+  <%end%>
+</div>
