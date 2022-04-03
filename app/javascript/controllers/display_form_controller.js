@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["searchInput", "form", "formFiltered", "createNewCuveeFromExisting" ]
+  static targets = ["searchInput", "form", "formFiltered", "createNewCuveeFromExisting", "revealFields" ]
 
   connect() {
     console.log("Hello, controller");
@@ -28,7 +28,7 @@ export default class extends Controller {
 }
 
   nextfields() {
-
+   this.revealFieldsTarget.classList.remove("d-none");
   }
 
 }
