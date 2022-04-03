@@ -26,4 +26,9 @@ export default class extends Controller {
         this.createNewCuveeFromExistingTarget.outerHTML = data;
     });
 }
+
+  nextfields() {
+
+  }
+
 }

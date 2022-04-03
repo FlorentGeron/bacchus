@@ -1,28 +1,35 @@
 class CuveesController < ApplicationController
 
 def new
+  @appellations = Appellation.all.map { |appellation| ["#{appellation.nom}", appellation.id] }
   if params[:format].present?
     @cuveeref = Cuvee.find(params[:format].to_i)
     @cuvee = Cuvee.new(
-      appellation_id: @cuveeref.appellation_id,
+      appellation: @cuveeref.appellation,
       domaine: @cuveeref.domaine,
       cuvee: @cuveeref.cuvee
     )
   else
     @cuvee = Cuvee.new
-    @appellations = Appellation.all.map { |appellation| ["#{appellation.nom}", appellation.id] }
   end
 end
 
 def create
-  @cuvee = Cuvee.new(cuvee_params)
-  @cuvee.appellation = Appellation.find(cuvee_params[:appellation].to_i)
+  @cuvee = Cuvee.new(
+    appellation: Appellation.find(cuvee_params[:appellation_id]),
+    domaine: cuvee_params[:domaine],
+    cuvee: cuvee_params[:cuvee],
+    annee: cuvee_params[:annee],
+    date_deg_min: cuvee_params[:date_deg_min],
+    date_deg_max: cuvee_params[:date_deg_max]
+  )
   if @cuvee.save
     flash[:alert] = "Nouvelle cuvée!"
   redirect_to new_bouteille_path
   else
     flash[:alert] = "Oups! Essayez encore..."
   render 'new'
+  raise
   end
 end
 
@@ -71,6 +78,6 @@ def filter_cuvees
 end
 
 def cuvee_params
-  params.require(:cuvee).permit(:appellation, :domaine, :cuvee, :annee, :prix_achat, :date_deg_min, :date_deg_max)
+  params.require(:cuvee).permit(:appellation, :appellation_id, :domaine, :cuvee, :annee, :date_deg_min, :date_deg_max)
 end
 end

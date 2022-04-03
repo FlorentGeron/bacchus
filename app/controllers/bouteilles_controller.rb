@@ -7,7 +7,7 @@ class BouteillesController < ApplicationController
       @search_params = params[:keyword]
       @cuveesforsearch = filter_cuvees.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
     else
-      @cuveesforsearch = Cuvee.last
+      @cuveesforsearch = [["#{Cuvee.last.domaine} #{Cuvee.last.cuvee} #{Cuvee.last.annee.year}", Cuvee.last.id]]
     end
 
     @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
