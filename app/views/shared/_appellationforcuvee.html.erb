@@ -1,0 +1,13 @@
+<div data-cuvee-form-target="formFiltered">
+  <%= simple_form_for(@cuvee) do |f|%>
+    <%=f.association :appellation, label: false, collection: appellations, as: :radio_buttons, input_html: {:"data-action"=>"input->cuvee-form#displayrest", :"data-cuvee-form-target"=> "appellationInput"}%>
+    <div class= "d-none" data-cuvee-form-target="restOfForm">
+    <%=f.input  :domaine%>
+    <%=f.input :cuvee%>
+  <%= f.input :annee, as: :date, html5: true%>
+  <%= f.input :date_deg_min, as: :date, html5: true %>
+  <%= f.input :date_deg_max, as: :date, html5: true%>
+  <%= f.submit %>
+    </div>
+  <%end%>
+</div>
