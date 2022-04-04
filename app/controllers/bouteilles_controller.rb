@@ -57,6 +57,8 @@ class BouteillesController < ApplicationController
     end
   end
 
+  def metrics
+  end
 
 private
 

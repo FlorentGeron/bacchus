@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :bouteilles, only: :show do
     resources :degustations, only: %i[new create]
   end
+  get '/bouteilles/metrics', to: 'bouteilles#metrics', as: :metrics
 end
