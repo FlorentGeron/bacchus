@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :bouteilles, only: :new do
     get 'renderbuttons', to: 'bouteilles#renderbuttons'
   end
+  get '/bouteilles/metrics', to: 'bouteilles#metrics', as: :metrics
   resources :bouteilles, only: :show do
     resources :degustations, only: %i[new create]
   end
-  get '/bouteilles/metrics', to: 'bouteilles#metrics', as: :metrics
 end
