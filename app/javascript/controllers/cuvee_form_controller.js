@@ -1,12 +1,12 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["searchInput", "form", "formFiltered", "revealFields" ]
+  static targets = ["searchInput", "form", "formFiltered", "restOfForm", "appellationInput" ]
 
   connect() {
     console.log("Hello World!")
   }
-  
+
   updateappellation(e) {
     //console.log(e.currentTarget.value);
     const url = `${this.formTarget.action}?keyword=${this.searchInputTarget.value}`
@@ -16,4 +16,9 @@ export default class extends Controller {
       this.formFilteredTarget.outerHTML = data;
   })
 }
+
+  displayrest() {
+    this.restOfFormTarget.classList.remove("d-none");
+  }
+
 }
