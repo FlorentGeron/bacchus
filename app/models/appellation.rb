@@ -1,9 +1,10 @@
 class Appellation < ApplicationRecord
   has_many :cuvees
-
+  has_many :bouteilles, through: :cuvees
+  
   validates :pays, :region, :couleur, :norme, presence: true
   validates :nom, presence: true
-  
+
   require "open-uri"
   require "nokogiri"
   require "csv"

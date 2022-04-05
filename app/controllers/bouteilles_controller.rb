@@ -58,7 +58,8 @@ class BouteillesController < ApplicationController
   end
 
   def metrics
-    @bouteilles = Bouteille.includes(:cuvee).where(statut: 'à boire')
+    @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).where(statut: 'à boire')
+    #@bouteilles.map{}
   end
 
 private

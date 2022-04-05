@@ -1,3 +1,3 @@
 <div class="container">
-<%= pie_chart @bouteilles.group(:"cuvee").count %>
+<%= pie_chart @bouteilles.group(:"appellation.couleur").count %>
 </div>
