@@ -1,6 +1,6 @@
 <div class="container">
 Répartition des stocks :
-<%= pie_chart @bouteilles.joins(:cave).group(:cave).count%>
+<%= pie_chart @bouteilles.joins(:cave).group(:nom).count%>
 <%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:couleur).count %>
 <%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:region).count %>
 

@@ -35,6 +35,7 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'chartkick'
+gem 'groupdate'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
