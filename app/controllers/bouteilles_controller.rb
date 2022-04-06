@@ -57,6 +57,10 @@ class BouteillesController < ApplicationController
     end
   end
 
+  def metrics
+    @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).where(statut: 'à boire')
+    @degustations = Degustation.all
+  end
 
 private
 
