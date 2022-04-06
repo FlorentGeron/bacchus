@@ -9,26 +9,18 @@ class Bouteille < ApplicationRecord
     self.statut = "à boire"
   end
 
-  def self.weekly_stock
-    source_for_chart = {
-      date: [],
-      stock: []
-    }
+  def self.daily_stock
+    source_for_chart = []
     stock = Bouteille.all
-    count_achat = 0
-    count_degust = 0
     stock.each do |bouteille|
-      count_achat = count_achat +1
-      source_for_chart[:date] << bouteille.date_achat
-      source_for_chart[:stock] << count_achat
+      source_for_chart << [bouteille.date_achat, 1]
     end
     degustations = Degustation.all
     degustations.each do |degustation|
-      count_degust = count_degust -1
-      source_for_chart[:date] << degustation.date_deg
-      source_for_chart[:stock] << count_degust
+      source_for_chart << [degustation.date_deg, -1]
     end
-    source_for_chart
+    sum =0
+    source_for_chart.map{ |x,y| [x, (sum += y)] }
   end
 
 end

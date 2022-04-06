@@ -5,14 +5,17 @@ Répartition des stocks :
 <%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:region).count %>
 
 Evolution des stocks :
-<%= line_chart Bouteille.weekly_stock.group_by_week(:date).count%>
+<%= line_chart Bouteille.daily_stock%>
 
 
 Achats cette année :
+<%= pie_chart @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:couleur).count %>
+<%= pie_chart @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:region).count%>
 
 
-Dégustations :
-
+Dégustations cette année :
+<%= pie_chart Degustation.joins(:bouteille => [{:cuvee => :appellation}]).where("date_deg > ?", Date.new(2022,01,01)).group(:couleur).count %>
+<%= pie_chart Degustation.joins(:bouteille =>  [{:cuvee => :appellation}]).where("date_deg > ?", Date.new(2022,01,01)).group(:region).count%>
 
 
 </div>
