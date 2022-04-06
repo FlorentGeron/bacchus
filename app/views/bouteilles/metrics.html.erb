@@ -5,7 +5,7 @@ Répartition des stocks :
 <%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:region).count %>
 
 Evolution des stocks :
-
+<%= line_chart Bouteille.weekly_stock.group_by_week(:date).count%>
 
 
 Achats cette année :
