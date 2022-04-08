@@ -1,5 +1,5 @@
 <div class="container">
-<%= simple_form_for @degustation do |f|%>
+<%= simple_form_for ([@bouteille, @degustation]) do |f|%>
 <%= f.input :date_deg, as: :date, html5: true%>
 <%= f.input :plat%>
 <%= f.input :note_cuvee%>
