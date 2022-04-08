@@ -1,2 +1,11 @@
-<h1>Degustations#new</h1>
-<p>Find me in app/views/degustations/new.html.erb</p>
+<div class="container">
+<%= simple_form_for ([@bouteille, @degustation]) do |f|%>
+<%= f.input :date_deg, as: :date, html5: true%>
+<%= f.input :plat%>
+<%= f.input :note_cuvee%>
+<%= f.input :commentaire%>
+<%= f.input :note_accord%>
+<%= f.input :commentaire_accord%>
+<%= f.submit%>
+<%end%>
+</div>
