@@ -4,7 +4,7 @@ class Cuvee < ApplicationRecord
   has_many :caves, through: :bouteilles
   has_many :degustations, through: :bouteilles
 
-  validates :appellation_id, :domaine, :annee, presence: true
+  validates :appellation, :domaine, :annee, presence: true
 
 
 def bouteillesaboire
