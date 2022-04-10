@@ -2452,9 +2452,9 @@ France,Languedoc-Roussillon,Collioure rouge,Rouge,AOC-AOP
 France,Languedoc-Roussillon,Corbières blanc,Blanc,AOC-AOP
 France,Languedoc-Roussillon,Corbières rosé,Rosé,AOC-AOP
 France,Languedoc-Roussillon,Corbières rouge,Rouge,AOC-AOP
-France,Languedoc-Roussillon,Costières de Nîmes blanc,Blanc,AOC-AOP
-France,Languedoc-Roussillon,Costières de Nîmes rosé,Rosé,AOC-AOP
-France,Languedoc-Roussillon,Costières de Nîmes rouge,Rouge,AOC-AOP
+France,Rhône,Costières de Nîmes blanc,Blanc,AOC-AOP
+France,Rhône,Costières de Nîmes rosé,Rosé,AOC-AOP
+France,Rhône,Costières de Nîmes rouge,Rouge,AOC-AOP
 France,Languedoc-Roussillon,Côtes du Roussillon blanc,Blanc,AOC-AOP
 France,Languedoc-Roussillon,Côtes du Roussillon Les Aspres,Rouge,AOC-AOP
 France,Languedoc-Roussillon,Côtes du Roussillon nouveau blanc,Blanc,AOC-AOP
@@ -2749,8 +2749,8 @@ France,Loire,Jasnières,Blanc,AOC-AOP
 France,Loire,Menetou-Salon blanc,Blanc,AOC-AOP
 France,Loire,Menetou-Salon rosé,Rosé,AOC-AOP
 France,Loire,Menetou-Salon rouge,Rouge,AOC-AOP
-France,Loire,Montlouis-sur-Loire,Blanc Moelleux,AOC-AOP
-France,Loire,Montlouis-sur-Loire mousseux,Blanc Pétillant,AOC-AOP
+France,Loire,Montlouis-sur-Loire blanc,Blanc Sec,AOC-AOP
+France,Loire,Montlouis-sur-Loire moelleux,Blanc Moelleux,AOC-AOP
 France,Loire,Montlouis-sur-Loire pétillant,Blanc Pétillant,AOC-AOP
 France,Loire,Muscadet,Blanc,AOC-AOP
 France,Loire,Muscadet Coteaux de la Loire,Blanc,AOC-AOP
@@ -2818,8 +2818,8 @@ France,Loire,Touraine rouge,Rouge,AOC-AOP
 France,Loire,Valençay blanc,Blanc,AOC-AOP
 France,Loire,Valençay rosé,Rosé,AOC-AOP
 France,Loire,Valençay rouge,Rouge,AOC-AOP
-France,Loire,Vouvray,Blanc,AOC-AOP
-France,Loire,Vouvray mousseux,Blanc Pétillant,AOC-AOP
+France,Loire,Vouvray sec,Blanc,AOC-AOP
+France,Loire,Vouvray moelleux,Blanc Moelleux,AOC-AOP
 France,Loire,Vouvray pétillant,Blanc Pétillant,AOC-AOP
 France,Loire,Calvados blanc,Blanc,IGP
 France,Loire,Calvados rosé,Rosé,IGP
