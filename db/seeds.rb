@@ -64,39 +64,19 @@ end
 
 puts "created #{Appellation.count}  #{'appellation'.pluralize(Appellation.count)}"
 
-puts "creating cuvees now"
+puts "creating cuvees from csv file"
 
-cuvee1 = Cuvee.create!(
-  appellation: Appellation.first,
-  domaine: "Jean-Pierre Timbaud",
-  cuvee: "Cotes du Nord",
-  annee: Date.new(2011, 2, 5),
-
-)
-
-cuvee2 = Cuvee.create!(
-  appellation: Appellation.first,
-  domaine: "Colonel Fabien",
-  cuvee: "Cotes du Sud",
-  annee: Date.new(2020, 2, 5),
-  prix_achat: 24
-)
-
-cuvee3 = Cuvee.create!(
-  appellation: Appellation.last,
-  domaine: "Saint Louis",
-  cuvee: "Cotes de l'Est",
-  annee: Date.new(2019, 2, 5),
-  prix_achat: 44
-)
-
-cuvee4 = Cuvee.create!(
-  appellation: Appellation.last,
-  domaine: "Jules Verne",
-  cuvee: "Cotes de l'Ouest",
-  annee: Date.new(2017, 2, 5),
-  prix_achat: 25
-)
+csv_cuvee = "lib/assets/cuvees.csv"
+csv_source = File.read(csv_cuvee)
+csv_parsed = CSV.parse(csv_source, :headers => true)
+csv_parsed.each do |row|
+  c = Cuvee.new
+  c.appellation = Appellation.find(row['Appellation'].to_i)
+  c.domaine = row['Domaine']
+  c.cuvee = row['Cuvée']
+  c.annee = DateTime.strptime(row['Année'], '%Y')
+  c.save!
+end
 
 puts "created #{Cuvee.count}  #{'cuvee'.pluralize(Cuvee.count)}"
 
@@ -104,7 +84,7 @@ puts "creating Bouteilles now!"
 
 bouteille1 = Bouteille.create!(
   cave: orleans,
-  cuvee: cuvee1,
+  cuvee: Cuvee.first,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 14
@@ -112,7 +92,7 @@ bouteille1 = Bouteille.create!(
 
 bouteille2 = Bouteille.create!(
   cave: orleans,
-  cuvee: cuvee1,
+  cuvee: Cuvee.first,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 14
@@ -120,7 +100,7 @@ bouteille2 = Bouteille.create!(
 
 bouteille3 = Bouteille.create!(
   cave: orleans,
-  cuvee: cuvee1,
+  cuvee: Cuvee.first,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 16
@@ -128,7 +108,7 @@ bouteille3 = Bouteille.create!(
 
 bouteille4 = Bouteille.create!(
   cave: paris,
-  cuvee: cuvee1,
+  cuvee: Cuvee.first,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 18
@@ -136,7 +116,7 @@ bouteille4 = Bouteille.create!(
 
 bouteille5 = Bouteille.create!(
   cave: paris,
-  cuvee: cuvee1,
+  cuvee: Cuvee.last,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 18
@@ -144,7 +124,7 @@ bouteille5 = Bouteille.create!(
 
 bouteille6 = Bouteille.create!(
   cave: paris,
-  cuvee: cuvee2,
+  cuvee: Cuvee.last,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 24
@@ -152,7 +132,7 @@ bouteille6 = Bouteille.create!(
 
 bouteille7 = Bouteille.create!(
   cave: paris,
-  cuvee: cuvee3,
+  cuvee: Cuvee.last,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 32
@@ -160,7 +140,7 @@ bouteille7 = Bouteille.create!(
 
 bouteille8 = Bouteille.create!(
   cave: sologne,
-  cuvee: cuvee3,
+  cuvee: Cuvee.first,
   date_achat: Date.new(2022, 1, 1),
   statut: "à boire",
   prix: 48
@@ -169,7 +149,7 @@ bouteille8 = Bouteille.create!(
 
 bouteille9 = Bouteille.create!(
   cave: paris,
-  cuvee: cuvee4,
+  cuvee: Cuvee.last,
   date_achat: Date.new(2022, 1, 1),
   statut: "mise de côté",
   prix: 12
@@ -178,7 +158,7 @@ bouteille9 = Bouteille.create!(
 
 bouteille10 = Bouteille.create!(
   cave: paris,
-  cuvee: cuvee4,
+  cuvee: Cuvee.last,
   date_achat: Date.new(2022, 1, 1),
   statut: "mise de côté",
   prix: 14
@@ -187,7 +167,7 @@ bouteille10 = Bouteille.create!(
 
 bouteille11 = Bouteille.create!(
   cave: orleans,
-  cuvee: cuvee4,
+  cuvee: Cuvee.first,
   date_achat: Date.new(2022, 1, 1),
   statut: "mise de côté",
   prix: 15
