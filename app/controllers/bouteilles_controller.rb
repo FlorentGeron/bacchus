@@ -27,7 +27,8 @@ class BouteillesController < ApplicationController
         emplacement2: bouteille_params[:emplacement2],
         emplacement3: bouteille_params[:emplacement3],
         date_achat: bouteille_params[:date_achat],
-        prix: bouteille_params[:prix].to_i
+        prix: bouteille_params[:prix].to_f,
+        provenance: bouteille_params[:provenance]
       )
       @bouteille.save
     end
@@ -65,7 +66,7 @@ class BouteillesController < ApplicationController
 private
 
   def bouteille_params
-    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix)
+    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance)
   end
 
   def create_params
