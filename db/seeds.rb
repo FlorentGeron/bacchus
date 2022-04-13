@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "csv"
+require "date"
 
 puts "All right, folks! Let's seed!"
 
@@ -75,114 +76,44 @@ csv_parsed.each do |row|
   c.domaine = row['Domaine']
   c.cuvee = row['Cuvée']
   c.annee = DateTime.strptime(row['Année'], '%Y')
+  c.date_deg_min = DateTime.strptime(row['date_deg_min'], '%Y')
   c.save!
 end
 
 puts "created #{Cuvee.count}  #{'cuvee'.pluralize(Cuvee.count)}"
 
-puts "creating Bouteilles now!"
+puts "creating Bouteilles from csv!"
 
-bouteille1 = Bouteille.create!(
-  cave: orleans,
-  cuvee: Cuvee.first,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 14
-)
-
-bouteille2 = Bouteille.create!(
-  cave: orleans,
-  cuvee: Cuvee.first,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 14
-)
-
-bouteille3 = Bouteille.create!(
-  cave: orleans,
-  cuvee: Cuvee.first,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 16
-)
-
-bouteille4 = Bouteille.create!(
-  cave: paris,
-  cuvee: Cuvee.first,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 18
-)
-
-bouteille5 = Bouteille.create!(
-  cave: paris,
-  cuvee: Cuvee.last,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 18
-)
-
-bouteille6 = Bouteille.create!(
-  cave: paris,
-  cuvee: Cuvee.last,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 24
-)
-
-bouteille7 = Bouteille.create!(
-  cave: paris,
-  cuvee: Cuvee.last,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 32
-)
-
-bouteille8 = Bouteille.create!(
-  cave: sologne,
-  cuvee: Cuvee.first,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "à boire",
-  prix: 48
-)
-
-
-bouteille9 = Bouteille.create!(
-  cave: paris,
-  cuvee: Cuvee.last,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "mise de côté",
-  prix: 12
-)
-
-
-bouteille10 = Bouteille.create!(
-  cave: paris,
-  cuvee: Cuvee.last,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "mise de côté",
-  prix: 14
-)
-
-
-bouteille11 = Bouteille.create!(
-  cave: orleans,
-  cuvee: Cuvee.first,
-  date_achat: Date.new(2022, 1, 1),
-  statut: "mise de côté",
-  prix: 15
-)
+csv_path = "lib/assets/Bouteilles.csv"
+csv_read = File.read(csv_path)
+csv_parse = CSV.parse(csv_read, :headers => true)
+csv_parse.each do |row|
+  b = Bouteille.new
+  b.cuvee = Cuvee.find(row['Cuvee'].to_i)
+  b.cave = Cave.find(row['Cave'].to_i)
+  b.emplacement1 = row['Emplacement']
+  b.date_achat = Date.parse(row['Ajouté_le'])
+  b.statut = row['statut']
+  b.provenance = row['Provenance']
+  b.prix = row['Prix'].to_f
+  b.save!
+end
 
 puts "created #{Bouteille.count}  #{'bouteille'.pluralize(Bouteille.count)}"
 
 puts "creating degustations now"
 
-deg1 = Degustation.create!(
-  bouteille: bouteille1,
-  date_deg: Date.new(2022, 1, 4),
-  note_cuvee: 5,
-  commentaire: "Pas trop mal"
-)
+csv_degs = "lib/assets/Degustations.csv"
+csv_source_degs = File.read(csv_degs)
+csv_parse_degs = CSV.parse(csv_source_degs, :headers => true)
+csv_parse_degs.each do |row|
+  d = Degustation.new
+  d.bouteille = Bouteille.find(row['Bouteille_id'].to_i)
+  d.date_deg = Date.parse(row['Date_deg'])
+  d.commentaire = row['Commentaire']
+  d.note_cuvee = 4
+  d.save!
+end
 
 puts "created #{Degustation.count}  #{'degustation'.pluralize(Degustation.count)}"
 
