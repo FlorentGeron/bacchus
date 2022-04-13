@@ -12,26 +12,26 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 1469,Alphonse Cornu,,2014,2019
 3296,Anatheme,,2016,2022
 3171,André & Michel Quenard,terres Brunes,2015,2018
-2241,André Bonhomme,Tradition,2020,
-2241,André Bonhomme,Les quarts,2019,
-2241,André Bonhomme,Les hauts des menards,2019,
+2241,André Bonhomme,Tradition,2020,2022
+2241,André Bonhomme,Les quarts,2019,2022
+2241,André Bonhomme,Les hauts des menards,2019,2022
 1912,Aurélien Verdet,,2007,2017
 876,Aurelius,,2010,2022
 2182,Bachey-Legros,La comme vieilles vignes,2012,2018
 2662,Baron de la Varière,,2011,2022
 838,Baron de Lestac,,2010,2022
 2580,Bastide Miraflors,,2013,2022
-3025,Belle,Cuvée Louis Belle,2019,
-813,Bergeron,,2020,
+3025,Belle,Cuvée Louis Belle,2019,2022
+813,Bergeron,,2020,2022
 2376,Berthet Bondet,,2007,2022
 2377,Berthet Bondet,Savagnier,2013,2022
 2377,Berthet Bondet,Savagnin,2010,2022
 2377,Berthet Bondet,Tradition,2011,2022
 999,Bitouzet Prieux,Beaunes Cent Vignes,2010,2022
 2547,Borie La Vitarèle,les Schistes,2014,2019
-2970,Bracoud,Viognier,2018,
-2962,Bracoud,,2018,
-2325,Brassard,,2010,
+2970,Bracoud,Viognier,2018,2022
+2962,Bracoud,,2018,2022
+2325,Brassard,,2010,2022
 2754,Bruno Cormerais,cuvée prestige,2011,2022
 2754,Bruno Cormerais,cuvée vieille vigne,2013,2022
 1053,Cachat Ocquidant,,2015,2022
@@ -73,7 +73,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2962,Château Bonserine,La Sarrasine,2012,2022
 870,Château Carbonnieux,,2012,2018
 866,château Cardinal,,2009,2022
-847,château Castaing,,2008,
+847,château Castaing,,2008,2022
 859,château Citran,,2008,2022
 871,Château Coquillas,,2016,2018
 879,Chateau Cos Labory,,2010,2020
@@ -87,11 +87,11 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 870,Château de France,,2016,2018
 2724,Chateau de la desoucherie,,2011,2022
 2472,Chateau de la liquière,Cistus,2013,2022
-838,château de Lagorce,,2005,
+838,château de Lagorce,,2005,2022
 653,Chateau de Lavernette,Les vignes de la roche,2012,2022
 2790,Château de Parnay - Le clos,Le clos,2015,2022
 3219,Chateau de Plaisance,Tot ço que Cal,2014,2019
-838,château de Reignac,,2007,
+838,château de Reignac,,2007,2022
 2769,Chateau de Suronde,,2009,2022
 2769,Chateau de Suronde,,2010,2022
 2767,Château de Tracy,,2018,2020
@@ -116,7 +116,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2880,Chateau Grand Boise,,2012,2018
 876,château Grand Corbin d'Espagne,,2007,2022
 871,Chateau haut Nouchet,Arpege,2009,2022
-876,château Haut Rocher,,2005,
+876,château Haut Rocher,,2005,2022
 879,Chateau Haut-Marbuzet,,2011,2021
 2453,Chateau La Bastide,L’optimée,2011,2022
 2868,Château La Coste,,2017,2019
@@ -126,7 +126,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 3198,Chateau Lamartine,Cuvée Particulière,2012,2018
 871,Chateau Latour Martillac,,2005,2022
 842,Chateau Les Cèdres,,2006,2022
-840,château Mazeris,,2008,
+840,château Mazeris,,2008,2022
 865,Chateau Noaillac Cru Bourgeois,,2009,2022
 871,Château Olivier,,2014,2024
 871,Chateau pape Clément,,2011,2021
@@ -154,14 +154,14 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2463,Clos des Fees,Sorcieres,2019,2022
 2457,Clos des Fees,Sorcieres,2018,2022
 2463,Clos des Fees,Vieilles Vignes,2011,2018
-2954,Clos du Mont Olivet,,2006,
+2954,Clos du Mont Olivet,,2006,2022
 2954,Clos du Mont Olivet,,2007,2022
 2954,Clos du Mont Olivet,,2012,2020
 2954,Clos du Mont Olivet,Cuvée du papet,2010,2020
 2910,Clos Fornelli,Sciaccarellu,2020,2022
-3235,Clos Lapeyre,La Magendia,2012,
-3236,Clos Lapeyre,Mantoulan,2010,
-3236,Clos Lapeyre,Vitatge Viehl,2011,
+3235,Clos Lapeyre,La Magendia,2012,2022
+3236,Clos Lapeyre,Mantoulan,2010,2022
+3236,Clos Lapeyre,Vitatge Viehl,2011,2022
 2821,Clos Naudin,,2009,2019
 2821,Clos Naudin,,1996,2022
 2821,Clos Naudin,,2015,2025
@@ -171,9 +171,9 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2765,Clos Saint Fiacre,Cuvée Excellence,2014,2018
 2450,Clos Saint Sebastien,Inspiration Marine,2015,2020
 2890,Clos San Quilico,,2016,2019
-876,Clos Trimoulet,,2004,
+876,Clos Trimoulet,,2004,2022
 1550,Closerie des Alisiers,,2010,2022
-3147,Combe d'or,,2009,
+3147,Combe d'or,,2009,2022
 1080,Cornu,,2018,2020
 1445,Cornu,,2018,2020
 3234,Corri d'ansa,,2009,2022
@@ -198,7 +198,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2754,Domaine David,cuvée les barboires,2011,2022
 2536,Domaine de Barroubie,,1997,2022
 2954,Domaine de Beaurenard,,2011,2022
-3241,Domaine de bernasse,,1995,
+3241,Domaine de bernasse,,1995,2022
 3065,Domaine de Fondrèche,,2012,2014
 808,Domaine de la Caleche,,2013,2022
 3027,Domaine de la Daysse,,2010,2015
@@ -215,13 +215,13 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 653,Domaine de Thulon,,2018,2022
 810,Domaine de Thulon,,2015,2022
 806,Domaine de Thulon,,2020,2022
-653,Domaine de Thulon,,2020,
-653,Domaine de Thulon,Viognier,2020,
+653,Domaine de Thulon,,2020,2022
+653,Domaine de Thulon,Viognier,2020,2022
 2863,Domaine de Toasc,Rosé,2016,2019
 2954,Domaine de Villeneuve,Vieilles Vignes,2009,2014
 3027,Domaine des Espiers,,2012,2022
 2789,Domaine des Hautes Vignes,Vieilles Vignes,2014,2018
-2789,Domaine des Hautes Vignes,Vieilles Vignes,2018,
+2789,Domaine des Hautes Vignes,Vieilles Vignes,2018,2022
 2666,Domaine des petits quarts,Melleresses,2013,2018
 3263,Domaine du Boiron,,2010,2022
 2960,Domaine du Chene,,2018,2020
@@ -244,7 +244,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 897,Domaine Edmond Cornu & Fils,,2009,2015
 1438,Domaine Fabrice & Rolland Massé,,2015,2019
 2791,Domaine FL,Chamboureau,2010,2022
-2821,Domaine Margalleau,,2003,
+2821,Domaine Margalleau,,2003,2022
 1657,Domaine Meix Foulot,,2013,2018
 2465,Domaine Modat,Comme Avant,2016,2022
 2465,Domaine Modat,Comme avant,2012,2022
@@ -260,9 +260,9 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 4,Domaine Weinbach,Cuvée Théo,2016,2021
 10,Domaine Weinbach,Cuvée Colette,2016,2021
 2325,Drappier Millésimé,,2015,2022
-3135,Dupasquier,cuvée Altesse,2017,
-3137,Dupasquier,Marestel,2017,
-3152,Dupasquier,Mondeuse Blanche,2018,
+3135,Dupasquier,cuvée Altesse,2017,2022
+3137,Dupasquier,Marestel,2017,2022
+3152,Dupasquier,Mondeuse Blanche,2018,2022
 2994,E. Guigal,,2012,2022
 2494,Ermitage du Pic Saint Loup,Sainte Agnès,2011,2022
 2494,Ermitage du Pic Saint Loup,Sainte Agnès,2014,2019
@@ -272,8 +272,8 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2820,François Chidaine,Les Argiles,2015,2018
 2821,François Chidaine,,2010,2022
 2820,François Chidaine,Baudoin,2015,2018
-2752,François Chidaine,Clos Habert,2015,
-2752,François Chidaine,Les Tuffeaux,2015,
+2752,François Chidaine,Clos Habert,2015,2022
+2752,François Chidaine,Les Tuffeaux,2015,2022
 2751,François Chidaine,Clos du Breuil,2014,2022
 2751,François Chidaine,Les Choisilles,2014,2022
 2778,Frederic Mabileau,Coutures,2012,2022
@@ -288,7 +288,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2782,Gérard Boulay,Monts Damnés,2013,2018
 2708,Gigou,,2013,2022
 2000,Gilles Bouton,Sous la Pierre,2016,2020
-2822,Gilles Gaudron,,2017,
+2822,Gilles Gaudron,,2017,2022
 1080,Gilles Jayer,,2013,2019
 3025,Gilles Robin,Cuvée des chassis,2012,2022
 2580,Gilles Troullier,L’ultim,2014,2022
@@ -296,7 +296,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2325,Gonet,Origine,2018,2022
 1540,Guffens-Heynen,En Crazy,2011,2022
 2668,Guillon,,2009,2022
-809,Hamet-Spay,,2020,
+809,Hamet-Spay,,2020,2022
 10,Henri Gsell,Eichberg,2015,2020
 1330,Huguenot,,2015,2018
 5,J. Gsell,,2012,2022
@@ -318,7 +318,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 950,Jean Rocaut,,2011,2022
 1938,Jean Rocaut,,2010,2022
 2153,Jean Rocaut,,2011,2022
-2748,Jean Tellier,mademoiselle T,2019,
+2748,Jean Tellier,mademoiselle T,2019,2022
 10,JL & Fabienne Mann,Riesling Altenberger,2016,2019
 11,JL & Fabienne Mann,,2016,2022
 2680,Johann Spelty,Graviers,2005,2022
@@ -327,14 +327,14 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 3054,JP Lemenicier,Cuvée Elegance,2015,2022
 2961,JP Leminicier,,2012,2022
 2961,JP Leminicier,,2014,2019
-8,Kuentz Bas,,2016,
+8,Kuentz Bas,,2016,2022
 3196,L’ephemere,,2012,2022
 2453,La Cendrillon,Classique,2013,2022
 2782,La clef du Récit,,2013,2022
 876,La Gaffelière,,2010,2020
 2820,La Galinière,Excellence,2016,2018
 1098,La Meulière,,2017,2020
-1128,La Meulière,les Fourneaux,2020,
+1128,La Meulière,les Fourneaux,2020,2022
 3198,Lacapelle-Cabanac,Malbec XL,2010,2022
 1657,Latour,,2009,2015
 2240,Lebreuil,,2014,2018
@@ -355,7 +355,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2528,Les combes Cachées,les Hauts de Siran,2017,2022
 2528,Les combes Cachées,Combe Violon,2018,2022
 2529,Les combes Cachées,Soleil Rouge,2018,2022
-2607,Les Creisses,,2006,
+2607,Les Creisses,,2006,2022
 2607,Les Creisses,,2013,2022
 2607,Les Creisses,,2014,2022
 2607,Les Creisses,,2016,2019
@@ -370,16 +370,16 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 835,LIDL,,2011,2022
 3245,Lou Festayre (Lanusse),,2010,2022
 2742,Luneau Papin,Folle Blanche,2014,2022
-2742,Luneau Papin,Folle Blanche,2016,
+2742,Luneau Papin,Folle Blanche,2016,2022
 2742,Luneau Papin,Folle Blanche,2012,2022
-2754,Luneau Papin,Clos des Allées,2017,
+2754,Luneau Papin,Clos des Allées,2017,2022
 2754,Luneau Papin,Clos des lumières,2015,2022
 2754,Luneau Papin,Le L d’or,2014,2022
 2754,Luneau Papin,Terre de Pierre,2014,2022
 2754,Luneau Papin,Terre de Pierre,2016,2022
-2754,Luneau Papin,Terre de Pierre,2017,
+2754,Luneau Papin,Terre de Pierre,2017,2022
 2785,Lycée Viticole,,2009,2022
-869,Lynch Bage,,2003,
+869,Lynch Bage,,2003,2022
 876,Lyon La Fleur,,2008,2022
 2155,Marcel Couturier,La cour des bois,2012,2022
 1,Marcel Deiss,Engelgarten,2015,2020
@@ -394,15 +394,15 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 1310,Melon (Henry de Vezelay),,2011,2022
 1331,Michel Magnien,« Seuvrées »,2014,2019
 1355,Michel Magnien,Les goulots,2009,2022
-3053,Michelas St Jemms,,2020,
-3052,Michelas St Jemms,,2020,
-3024,Michelas St Jemms,,2020,
+3053,Michelas St Jemms,,2020,2022
+3052,Michelas St Jemms,,2020,2022
+3024,Michelas St Jemms,,2020,2022
 2191,Muzard,,2009,2022
-2668,Nathalie Aumasson,,2009,
+2668,Nathalie Aumasson,,2009,2022
 2668,Nathalie Aumasson,,2011,2022
 2668,Nathalie Omasson,,2010,2022
 2668,Nathalie Omasson,,2011,2022
-2328,Nicolas Feuillatte,,2019,
+2328,Nicolas Feuillatte,,2019,2022
 1039,Nuiton Beauney,,2009,2015
 1331,Nuiton Beauney,,2011,2022
 1079,Nuiton Beauney,,2012,2022
@@ -420,12 +420,12 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2325,Philiponnat,,2017,2022
 2680,Philippe Alliet,Coteaux de Noiré,2013,2019
 2680,Philippe Alliet,L’huisserie,2013,2019
-1658,Philippe Pacalet,,2016,
+1658,Philippe Pacalet,,2016,2022
 2680,Pichard,,2007,2022
 2619,Pierre et Soleil,La Galade,2013,2022
 2960,Pierre Jean Vila,Jardins Suspendus,2017,2020
 2325,Pierre Moncuit,Delos,2018,2022
-2325,Pierre Moncuit,Delos,2020,
+2325,Pierre Moncuit,Delos,2020,2022
 2790,Plessis Duval,,2011,2013
 949,Prunier,,2013,2018
 1179,Prunier,,2013,2018
@@ -434,7 +434,7 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2954,Raymond Usseglio,Cuvée Impériale,2015,2020
 838,Reignac,Grand vin de Reignac,2012,2018
 2784,René Carroi,,2010,2022
-2790,Rene Noël Legrand,La chaintrée,2005,
+2790,Rene Noël Legrand,La chaintrée,2005,2022
 2790,Rene Noël Legrand,La chaintrée,2006,2022
 2790,Rene Noël Legrand,La chaintrée,2009,2022
 2790,Rene Noël Legrand,La chaintrée,2010,2022
@@ -462,13 +462,13 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2084,Sylvain Ponsot-Vouvry,,2014,2022
 210,Sylvie Spielmann,Kanzlerberg,2011,2022
 217,Sylvie Spielmann,Kanzlerberg,2011,2022
-2325,Tixier,Blanc de blanc,2020,
-2326,Tixier,Suprême,2016,
+2325,Tixier,Blanc de blanc,2020,2022
+2326,Tixier,Suprême,2016,2022
 2509,Toques et Clochers,,2010,2022
 2748,Tour Saint Martin,Fumet,2019,2023
 2748,Tour Saint Martin,Morogues,2020,2023
 2748,Tour Saint Martin,Morogues,2016,2022
-2325,Tsarine,,2010,
+2325,Tsarine,,2010,2022
 2782,Vacheron,Guigne Chèvres,2013,2018
 2782,Vacheron,Les Romains,2013,2018
 2962,Vidal Fleury,,2009,2016
@@ -477,8 +477,8 @@ Appellation,Domaine,Cuvée,Année,date_deg_min
 2782,Vincent Pinard,Harmonie,2013,2018
 2782,Vincent Pinard,Harmonie,2014,2019
 804,Vissoux,Pierreux,2015,2022
-3152,Vullien,Jacquère,2020,
-3157,Vullien,,2020,
+3152,Vullien,Jacquère,2020,2022
+3157,Vullien,,2020,2022
 2954,Xavier Vignon,Cuvée anonyme,2009,2022
 3025,Yann Chave,,2016,2020
 2668,Yannick Amirault,La coudraye,2015,2022

@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "csv"
+require "date"
 
 puts "All right, folks! Let's seed!"
 
@@ -75,7 +76,7 @@ csv_parsed.each do |row|
   c.domaine = row['Domaine']
   c.cuvee = row['Cuvée']
   c.annee = DateTime.strptime(row['Année'], '%Y')
-  c.date_deg_min = row['date_deg_min']
+  c.date_deg_min = DateTime.strptime(row['date_deg_min'], '%Y')
   c.save!
 end
 
@@ -85,16 +86,16 @@ puts "creating Bouteilles from csv!"
 
 csv_path = "lib/assets/Bouteilles.csv"
 csv_read = File.read(csv_path)
-csv_parse = CSV.parse(csv_source, :headers => true)
+csv_parse = CSV.parse(csv_read, :headers => true)
 csv_parse.each do |row|
   b = Bouteille.new
-  b.cuvee = Cuvee.find(row['Cuvee_id'].to_i)
-  b.cave = Cave.find(row['Cave_id'].to_i)
+  b.cuvee = Cuvee.find(row['Cuvee'].to_i)
+  b.cave = Cave.find(row['Cave'].to_i)
   b.emplacement1 = row['Emplacement']
-  b.date_achat = DateTime.strptime(row['Ajouté_le'], '%D %M %Y')
+  b.date_achat = Date.parse(row['Ajouté_le'])
   b.statut = row['statut']
   b.provenance = row['Provenance']
-  b.prix = row['Prix']
+  b.prix = row['Prix'].to_f
   b.save!
 end
 
@@ -107,8 +108,8 @@ csv_source_degs = File.read(csv_degs)
 csv_parse_degs = CSV.parse(csv_source_degs, :headers => true)
 csv_parse_degs.each do |row|
   d = Degustation.new
-  d.bouteille = Bouteille.find(row['Bouteille_id'])
-  d.date_deg = DateTime.strptime(row['Date_deg'], '%D %M %Y')
+  d.bouteille = Bouteille.find(row['Bouteille_id'].to_i)
+  d.date_deg = Date.parse(row['Date_deg'])
   d.commentaire = row['Commentaire']
   d.note_cuvee = 4
   d.save!
