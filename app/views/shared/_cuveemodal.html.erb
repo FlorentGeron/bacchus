@@ -36,7 +36,7 @@
   <div class="modal-section">
     <% if @cave.blank? %>
       <%=cuvee.bouteillesaboire.count%> <%="bouteille".pluralize(cuvee.bouteillesaboire.count)%>
-      <% cuvee.bouteillesaboire.each do |bouteille|%>
+      <% cuvee.bouteillesaboire.includes([:cave]).each do |bouteille|%>
         <%=render 'shared/bottle_preview', bouteille: bouteille %>
       <%end%>
     <%else%>
