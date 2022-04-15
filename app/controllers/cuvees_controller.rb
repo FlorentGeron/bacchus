@@ -56,6 +56,10 @@ end
 def show
   @cuvee = Cuvee.find(params[:id])
   @degustations = @cuvee.degustations.uniq
+  respond_to do |format|
+    format.js
+  end
+  
 end
 
 

@@ -1,4 +1,4 @@
-<div class = "display-results" data-cuvee-index-target = "displayResults">
+<div class = "display-results" data-cuvee-index-target = "displayResults" id="modal-place">
   <% if cuvees.blank?%>
       Aucune cuvée ne correspond à ces critères
     <%else%>
@@ -7,7 +7,7 @@
             <div class="title-card">
               <%= cuvee.domaine%>
             </div>
-            <div class= "cuvee-preview-details" data-action= "click->cuvee-modal#openCuveeModal">
+            <div class= "cuvee-preview-details">
               <%= cuvee.cuvee%>
               <%= cuvee.annee.year%>
               <%= cuvee.appellation.nom%>
@@ -18,6 +18,7 @@
                   <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
                 <%end%>
               </div>
+                <%= link_to "show modal", cuvee_path(cuvee), remote: true %>
             </div>
           </div>
       <%end%>
