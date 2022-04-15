@@ -39,6 +39,10 @@ class BouteillesController < ApplicationController
     @bouteilles = Bouteille.includes(:cave).where(statut: 'mise de côté').order(updated_at: :desc)
   end
 
+  def edit
+    @bouteille = Bouteille.find(params[:id])
+  end
+
   def update
     @bouteille = Bouteille.find(params[:id])
     @cuvee = @bouteille.cuvee

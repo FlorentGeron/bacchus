@@ -2,11 +2,11 @@
   <div class="title-card"><%=bouteille.cave.nom%></div>
   <div class="bottle-details">
     <div class="localisation-fields">
-      <%=bouteille.id%>
       <%=bouteille.emplacement1%>
       <%=bouteille.emplacement2%>
       <%=bouteille.emplacement3%>
-      <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+      Ajouté le <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+      <%=bouteille.provenance%>
     </div>
     <div class="buttons-links">
       <%=link_to new_bouteille_degustation_path(bouteille) do%>
