@@ -9,6 +9,7 @@
       <%=bouteille.provenance%>
     </div>
     <div class="buttons-links">
+      <%= link_to "EDIT", edit_bouteille_path(bouteille)%>
       <%=link_to new_bouteille_degustation_path(bouteille) do%>
         <%=image_tag asset_path("pen_red"), class:"icon-link"%>
       <%end%>

@@ -1,0 +1,12 @@
+<div class="container">
+<div class="title">
+<h3>Déplacer cette bouteille de <%= @bouteille.cuvee.domaine%> <%=@bouteille.cuvee.cuvee%></h3>
+</div>
+<%= simple_form_for @bouteille do |f|%>
+<%= f.input :cave, collection: @caves, selected:@bouteille.cave%>
+<%= f.input :emplacement1, default: @bouteille.emplacement1%>
+<%= f.input :emplacement2, default: @bouteille.emplacement2%>
+<%= f.input :emplacement3, default: @bouteille.emplacement3%>
+<%= f.submit %>
+<%end%>
+</div>

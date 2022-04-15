@@ -41,6 +41,7 @@ class BouteillesController < ApplicationController
 
   def edit
     @bouteille = Bouteille.find(params[:id])
+    @caves = current_user.caves.map{|cave| ["#{cave.nom}", cave.id]}
   end
 
   def update
