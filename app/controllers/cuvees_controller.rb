@@ -45,6 +45,12 @@ def index
     cuvees = Cuvee.includes(:appellation, :bouteilles, :degustations, :caves)
     @cuvees = cuvees.joins(:bouteilles).where("bouteilles.statut = ?", "à boire").distinct.limit(20)
   end
+
+  respond_to do |format|
+    format.html # Follow regular flow of Rails
+    format.text { render partial: 'TO BE DONE', locals: { cuvees: @cuvees }}
+  end
+
 end
 
 def show
