@@ -1,6 +1,6 @@
 <div class= "container" data-controller = "cuvee-index">
   <div class = "search-block">
-    <form novalidate="novalidate" class="simple_form search mb-1" action="/cuvees" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" data-cuvee-index-target = "form" />
+    <form novalidate="novalidate" class="simple_form search mb-1" action="/cuvees" accept-charset="UTF-8" method="get" data-cuvee-index-target = "form"><input name="utf8" type="hidden" value="&#x2713;"/>
       <div class="search-form-control">
         <div class = "d-flex align-items-start justify-content-between form-group">
           <div class="col-3">
@@ -35,20 +35,11 @@
           </div>
         <div class="mt-3 d-flex align-items-start justify-content-between form-group">
         <input class="form-control string required" type="text" name="search[keyword]" id="search_keyword" data-action = "keyup->cuvee-index#filterresults" value="<%= @search_params[:keyword].present? ? @search_params[:keyword] : "" %>" data-cuvee-index-target="keyword"/>
-         <button name="button" type="submit" class="bacchus-button-filter">
-            <i class="fas fa-search"></i>
-          </button>
         </div>
       </div>
     </form>
   </div>
   <div class = "display-results" data-cuvee-index-target = "displayResults">
-    <% if @cuvees.blank?%>
-      Aucune cuvée ne correspond à ces critères
-    <%else%>
-      <% @cuvees.each do |cuvee|%>
-          <%= render "shared/cuveepreview", cuvee: cuvee%>
-      <%end%>
-    <%end%>
+    Merci d'utiliser les filtres et la recherche pour afficher des cuvées
   </div>
 </div>

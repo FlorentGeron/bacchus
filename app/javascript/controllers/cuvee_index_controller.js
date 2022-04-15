@@ -18,7 +18,8 @@ export default class extends Controller {
 
   filterresults(){
     console.log(this.couleurTarget.value)
-    const url = `${this.formTarget.action}?keyword=${this.keywordTarget.value}&cave=${this.caveTarget.value}&couleur=${this.couleurTarget.value}&region=${this.regionTarget.value}`
+    console.log(this.formTarget.action)
+    const url = `${this.formTarget.action}?&search%5Bcave%5D=${this.caveTarget.value}&search%5Bcouleur%5D=${this.couleurTarget.value}&search%5Bregion%5D=${this.regionTarget.value}&search%5Bkeyword%5D=${this.keywordTarget.value}`
     fetch(url, { headers: { 'Accept': 'text/plain' } })
     .then(response => response.text())
     .then((data)=> {

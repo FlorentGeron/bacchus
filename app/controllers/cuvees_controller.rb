@@ -48,7 +48,7 @@ def index
 
   respond_to do |format|
     format.html # Follow regular flow of Rails
-    format.text { render partial: 'TO BE DONE', locals: { cuvees: @cuvees }}
+    format.text { render partial: 'shared/resultscuvee.html', locals: { cuvees: @cuvees }}
   end
 
 end
