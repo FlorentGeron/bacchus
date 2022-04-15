@@ -13,7 +13,11 @@
       acheté : <%= cuvee.prix_achat%> €
       cote actuelle :<%= cuvee.prix_actuel%> €
     </div>
-    A déguster entre <%= cuvee.date_deg_min%> et <%=cuvee.date_deg_max%>
+    <%if cuvee.date_deg_max.blank? %>
+      A déguster à partir de <%= cuvee.date_deg_min.year%>
+    <%else%>
+      A déguster entre <%= cuvee.date_deg_min.year%> et <%=cuvee.date_deg_max_year%>
+    <%end%>
   </div>
   <div class="modal-section">
     <%if cuvee.degustations.uniq.count > 0 %>
