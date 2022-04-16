@@ -45,11 +45,21 @@ def index
     cuvees = Cuvee.includes(:appellation, :bouteilles, :degustations, :caves)
     @cuvees = cuvees.joins(:bouteilles).where("bouteilles.statut = ?", "à boire").distinct.limit(20)
   end
+
+  respond_to do |format|
+    format.html # Follow regular flow of Rails
+    format.text { render partial: 'shared/resultscuvee.html', locals: { cuvees: @cuvees }}
+  end
+
 end
 
 def show
   @cuvee = Cuvee.find(params[:id])
   @degustations = @cuvee.degustations.uniq
+  respond_to do |format|
+    format.js
+  end
+  
 end
 
 
@@ -70,7 +80,7 @@ def filter_cuvees
   cuvees = Cuvee.includes(:appellation, :bouteilles, :degustations, :caves)
   cuvees = cuvees.joins(:bouteilles).where("bouteilles.statut = ?", "à boire").distinct
   # cuvees = Cave.find_by("nom ILIKE?", "%#{search_params[:cave]}%").bouteilles.map{|bouteille| bouteille.cuvee}.uniq unless search_params[:cave].blank?
-  cuvees = cuvees.joins(:appellation).where("appellations.nom ILIKE ?", "%#{search_params[:keyword]}%") unless search_params[:keyword].blank?
+  cuvees = cuvees.joins(:appellation).where("appellations.nom ILIKE ? OR cuvees.domaine ILIKE ? OR cuvees.cuvee ILIKE ?", "%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%") unless search_params[:keyword].blank?
   cuvees = cuvees.joins(bouteilles: :cave).where("caves.nom LIKE ?", "#{search_params[:cave]}") unless search_params[:cave].blank?
   cuvees = cuvees.joins(:appellation).where("appellations.region LIKE ?", "#{search_params[:region]}") unless search_params[:region].blank?
   cuvees = cuvees.joins(:appellation).where("appellations.couleur LIKE ?", "#{search_params[:couleur]}") unless search_params[:couleur].blank?

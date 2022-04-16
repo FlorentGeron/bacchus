@@ -1,0 +1,28 @@
+<div class = "display-results" data-cuvee-index-target = "displayResults">
+  <div id="modal-place" data-controller = "cuvee-modal">
+  </div>
+  <% if cuvees.blank?%>
+      Aucune cuvée ne correspond à ces critères
+    <%else%>
+      <% cuvees.each do |cuvee|%>
+          <div class= "cuvee-preview">
+            <div class="title-card">
+              <%= cuvee.domaine%>
+            </div>
+            <div class= "cuvee-preview-details">
+              <%= cuvee.cuvee%>
+              <%= cuvee.annee.year%>
+              <%= cuvee.appellation.nom%>
+              <div class="sticker">
+                <% if @search_params[:cave].blank? %>
+                  <%=cuvee.bouteillesaboire.count%>
+                <%else %>
+                  <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
+                <%end%>
+              </div>
+                <%= link_to "show modal", cuvee_path(cuvee), {:remote => true, 'data-toggle' => 'modal'} %>
+            </div>
+          </div>
+      <%end%>
+    <%end%>
+</div>

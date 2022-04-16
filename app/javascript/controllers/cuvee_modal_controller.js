@@ -10,10 +10,10 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "closedModal", "openModal" ]
+  static targets = [ "closedModal", "openModal", "displayNone" ]
 
   connect() {
-    console.log('Hello, Stimulus!');
+    console.log('Hello, Modal!');
   }
 
   openCuveeModal() {
@@ -23,8 +23,9 @@ export default class extends Controller {
   }
 
   closeModal() {
+    console.log('clickonbutton')
     this.openModalTarget.classList.add('d-none');
-    this.closedModalTarget.classList.add('d-none');
+    this.displayNoneTarget.style.display = 'none';
     console.log("done closing");
   }
 }
