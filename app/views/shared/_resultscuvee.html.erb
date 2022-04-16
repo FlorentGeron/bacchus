@@ -1,4 +1,6 @@
-<div class = "display-results" data-cuvee-index-target = "displayResults" id="modal-place">
+<div class = "display-results" data-cuvee-index-target = "displayResults">
+  <div id="modal-place">
+  </div>
   <% if cuvees.blank?%>
       Aucune cuvée ne correspond à ces critères
     <%else%>
@@ -18,7 +20,7 @@
                   <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
                 <%end%>
               </div>
-                <%= link_to "show modal", cuvee_path(cuvee), remote: true %>
+                <%= link_to "show modal", cuvee_path(cuvee), {:remote => true, 'data-toggle' => 'modal'} %>
             </div>
           </div>
       <%end%>
