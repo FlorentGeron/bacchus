@@ -1,11 +1,11 @@
 <div class = "display-results" data-cuvee-index-target = "displayResults">
-  <div id="modal-place">
+  <div id="modal-place" data-controller = "cuvee-modal">
   </div>
   <% if cuvees.blank?%>
       Aucune cuvée ne correspond à ces critères
     <%else%>
       <% cuvees.each do |cuvee|%>
-          <div class= "cuvee-preview" data-controller = "cuvee-modal">
+          <div class= "cuvee-preview">
             <div class="title-card">
               <%= cuvee.domaine%>
             </div>
