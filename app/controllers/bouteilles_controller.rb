@@ -66,6 +66,12 @@ class BouteillesController < ApplicationController
   def metrics
     @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).where(statut: 'à boire')
     @degustations = Degustation.all
+    #Variables data & colors pour pie chart stock par couleur
+    @bouteillescouleurs = @bouteilles.joins(:cuvee => :appellation).group(:couleur).count
+    @colorscouleurs = define_colors(@bouteillescouleurs, "couleur")
+    #Variables data & colors pour pie chart achat par couleur
+    @bouteillesachatcouleurs = @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:couleur).count
+    @colorsachatcouleurs = define_colors(@bouteillesachatcouleurs, "couleur")
   end
 
 private
@@ -82,5 +88,19 @@ private
 
   def filter_cuvees
     cuvees = Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%") unless params[:keyword].blank?
+  end
+
+  def define_colors(data, type)
+    result = []
+    if type == "couleur"
+      data.each do |p,_|
+        result << Appellation::COULEURCOLORS[p.to_sym]
+      end
+    else
+      data.each do |p,_|
+        result << Appellation::REGIONCOLORS[p.to_sym]
+      end
+    end
+    return result
   end
 end

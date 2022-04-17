@@ -1,7 +1,7 @@
 <div class="container">
 Répartition des stocks :
 <%= pie_chart @bouteilles.joins(:cave).group(:nom).count%>
-<%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:couleur).count %>
+<%= pie_chart @bouteillescouleurs, colors: @colorscouleurs%>
 <%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:region).count %>
 
 Evolution des stocks :
@@ -9,7 +9,7 @@ Evolution des stocks :
 
 
 Achats cette année :
-<%= pie_chart @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:couleur).count %>
+<%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs%>
 <%= pie_chart @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:region).count%>
 
 
