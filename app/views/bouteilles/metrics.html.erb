@@ -14,7 +14,7 @@ Achats cette année :
 
 
 Dégustations cette année :
-<%= pie_chart Degustation.joins(:bouteille => [{:cuvee => :appellation}]).where("date_deg > ?", Date.new(2022,01,01)).group(:couleur).count %>
+<%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs%>
 <%= pie_chart Degustation.joins(:bouteille =>  [{:cuvee => :appellation}]).where("date_deg > ?", Date.new(2022,01,01)).group(:region).count%>
 
 
