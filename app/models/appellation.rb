@@ -11,14 +11,14 @@ class Appellation < ApplicationRecord
 
   REGIONCOLORS = {
     Alsace: '#FAECDD',
-    Beaujolais: 'E5044B',
+    Beaujolais: '#E5044B',
     Bordeaux: '#67103C',
     Bourgogne: '#EA4B7D',
     Champagne: '#DCCCA3',
-    Jura: '#E6AD1C',
-    :'Languedoc-Roussillon' => '#4A2545',
+    Jura: '#E6D61C',
+    :'Languedoc-Roussillon' => '#A5D8FF',
     Loire: '#FFB7C3',
-    :'Provence-Corse' => '#C4D6B0',
+    :'Provence-Corse' => '#A77E58',
     Rhône: '#0B7A99',
     :'Savoie Bugey' => '#FFA552',
     :'Sud-Ouest' => '#1CB9E6'
@@ -26,10 +26,10 @@ class Appellation < ApplicationRecord
 
   COULEURCOLORS = {
     Blanc: '#FAECDD',
-    :'Blanc Moelleux' => '#E6AD1C',
+    :'Blanc Moelleux' => '#FFA552',
     Rouge: '#E5044B',
     Rosé: '#FFB7C3',
-    :'Blanc Pétillant' => '#C4D6B0',
+    :'Blanc Pétillant' => '#DCCCA3',
     :'Rosé Pétillant' => '#EA4B7D',
     :'Rouge Moelleux' => '#67103C'
   }
