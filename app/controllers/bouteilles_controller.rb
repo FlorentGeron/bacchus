@@ -36,7 +36,7 @@ class BouteillesController < ApplicationController
   end
 
   def index
-    @bouteilles = Bouteille.includes(:cave).where(statut: 'mise de côté').order(updated_at: :desc)
+    @bouteilles = Bouteille.includes(:cave).where("statut= 'mise de côté' AND caves.user_id = #{current_user.id}").order(updated_at: :desc)
   end
 
   def edit
