@@ -59,7 +59,7 @@ def show
   respond_to do |format|
     format.js
   end
-  
+
 end
 
 
@@ -77,7 +77,7 @@ def search_params
 end
 
 def filter_cuvees
-  cuvees = Cuvee.includes(:appellation, :bouteilles, :degustations, :caves)
+  cuvees = Cuvee.includes(:appellation, :bouteilles, :degustations, :caves).joins(bouteilles: :cave).where("caves.user = ?", current_user)
   cuvees = cuvees.joins(:bouteilles).where("bouteilles.statut = ?", "à boire").distinct
   # cuvees = Cave.find_by("nom ILIKE?", "%#{search_params[:cave]}%").bouteilles.map{|bouteille| bouteille.cuvee}.uniq unless search_params[:cave].blank?
   cuvees = cuvees.joins(:appellation).where("appellations.nom ILIKE ? OR cuvees.domaine ILIKE ? OR cuvees.cuvee ILIKE ?", "%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%") unless search_params[:keyword].blank?
