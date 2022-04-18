@@ -1,21 +1,21 @@
 <div class="container">
 Répartition des stocks :
-<%= pie_chart @bouteilles.joins(:cave).group(:nom).count%>
-<%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:couleur).count %>
-<%= pie_chart @bouteilles.joins(:cuvee => :appellation).group(:region).count %>
+<%= pie_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD']%>
+<%= pie_chart @bouteillescouleurs, colors: @colorscouleurs%>
+<%= pie_chart  @bouteillesregions, colors: @colorsregions%>
 
 Evolution des stocks :
-<%= line_chart Bouteille.daily_stock%>
+<%= line_chart Bouteille.daily_stock, colors: ['#E5044B']%>
 
 
 Achats cette année :
-<%= pie_chart @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:couleur).count %>
-<%= pie_chart @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:region).count%>
+<%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs%>
+<%= pie_chart @bouteillesachatregions, colors: @colorsachatregions%>
 
 
 Dégustations cette année :
-<%= pie_chart Degustation.joins(:bouteille => [{:cuvee => :appellation}]).where("date_deg > ?", Date.new(2022,01,01)).group(:couleur).count %>
-<%= pie_chart Degustation.joins(:bouteille =>  [{:cuvee => :appellation}]).where("date_deg > ?", Date.new(2022,01,01)).group(:region).count%>
+<%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs%>
+<%= pie_chart @degustationsregions, colors: @colorsdegregions%>
 
 
 </div>

@@ -20,7 +20,7 @@ class Bouteille < ApplicationRecord
       source_for_chart << [degustation.date_deg, -1]
     end
     sum =0
-    source_for_chart.map{ |x,y| [x, (sum += y)] }
+    source_for_chart.sort_by{|bouteille| bouteille.first}.map{ |x,y| [x, (sum += y)] }
   end
 
 end
