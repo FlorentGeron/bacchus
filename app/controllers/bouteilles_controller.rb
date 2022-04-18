@@ -75,6 +75,15 @@ class BouteillesController < ApplicationController
     #Variables data & colors pour pie char degustations par couleur
     @degustationscouleurs = @degustations.group(:couleur).count
     @colorsdegcouleurs = define_colors(@degustationscouleurs, "couleur")
+    #Variables data & colors pour pie chart par region
+    @bouteillesregions = @bouteilles.joins(:cuvee => :appellation).group(:region).count
+    @colorsregions = define_colors(@bouteillesregions, "region")
+    #Variables data & colors pour pie chart achat par region
+    @bouteillesachatregions = @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31)).group(:region).count
+    @colorsachatregions = define_colors(@bouteillesachatregions, "region")
+    #Variables data & colors pour pie char degustations par couleur
+    @degustationsregions = @degustations.group(:region).count
+    @colorsdegregions = define_colors(@degustationsregions, "region")
   end
 
 private
