@@ -5,7 +5,7 @@ Répartition des stocks :
 <%= pie_chart  @bouteillesregions, colors: @colorsregions%>
 
 Evolution des stocks :
-<%= line_chart Bouteille.daily_stock%>
+<%= line_chart Bouteille.daily_stock, colors: ['#E5044B']%>
 
 
 Achats cette année :
