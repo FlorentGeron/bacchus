@@ -1,0 +1,11 @@
+<div class="container">
+  <%=simple_form_for @cave do |f|%>
+    <%=f.input :nom%>
+    <%=f.input :localisation%>
+    <%=f.input :capacité%>
+    <%=f.submit%>
+  <%end%>
+  <%=link_to settings_path do%>
+    <div class="bacchus-button-filter">Retour</div>
+  <%end%>
+</div>

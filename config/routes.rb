@@ -15,4 +15,5 @@ Rails.application.routes.draw do
     resources :degustations, only: %i[new index]
     post '/degustations/', to: 'degustations#create', as: :create_degustations
   end
+  get 'settings', to: 'pages#settings', as: :settings
 end

@@ -6,7 +6,7 @@
           <div class="col-3">
               <select class="form-select form-control" name="search[cave]" id="search_cave" data-action="input->cuvee-index#filterresults" data-cuvee-index-target="cave">
                 <option value="">Cave</option>
-                <%Cave.all.each do |cave|%>
+                <%Cave.includes(:user).where(user: current_user).each do |cave|%>
                 <option <%= cave.nom == @search_params[:cave] ? "selected" : "" %>><%=cave.nom%></option>
                 <%end%>
               </select>
