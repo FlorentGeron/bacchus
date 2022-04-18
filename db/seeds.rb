@@ -18,11 +18,17 @@ User.destroy_all
 Cuvee.destroy_all
 Appellation.destroy_all
 
-puts "creating a user"
+puts "creating 2 users"
 me = User.create!(
   email: "master@bacchus.com",
   password: "000000"
 )
+
+you = User.create!(
+  email: "slave@bacchus.com",
+  password:"000000"
+)
+
 puts "created #{User.count}  #{'user'.pluralize(User.count)}"
 
 puts "creating 3 caves"
