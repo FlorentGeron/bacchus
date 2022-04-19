@@ -8,7 +8,12 @@ class Cuvee < ApplicationRecord
 
 
 def bouteillesaboire
-self.bouteilles.where("bouteilles.statut = ?", "à boire")
+  self.bouteilles.where("bouteilles.statut = ?", "à boire")
+end
+
+def prix_moyen
+  teilles = self.bouteilles.map(&:prix)
+  teilles.sum / teilles.size
 end
 
 end
