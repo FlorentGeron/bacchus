@@ -5,6 +5,7 @@
       Aucune cuvée ne correspond à ces critères
     <%else%>
       <% cuvees.each do |cuvee|%>
+        <%= link_to cuvee_path(cuvee), {:remote => true, 'data-toggle' => 'modal'} do%>
           <div class= "cuvee-preview">
             <div class="title-card">
               <%= cuvee.domaine%>
@@ -20,9 +21,9 @@
                   <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
                 <%end%>
               </div>
-                <%= link_to "show modal", cuvee_path(cuvee), {:remote => true, 'data-toggle' => 'modal'} %>
             </div>
           </div>
+        <%end%>
       <%end%>
     <%end%>
 </div>
