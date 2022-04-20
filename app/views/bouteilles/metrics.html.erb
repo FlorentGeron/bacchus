@@ -1,21 +1,22 @@
 <div class="container">
-Répartition des stocks :
-<%= pie_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD']%>
-<%= pie_chart @bouteillescouleurs, colors: @colorscouleurs%>
-<%= pie_chart  @bouteillesregions, colors: @colorsregions%>
-
-Evolution des stocks :
-<%= line_chart Bouteille.daily_stock, colors: ['#E5044B']%>
-
-
-Achats cette année :
-<%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs%>
-<%= pie_chart @bouteillesachatregions, colors: @colorsachatregions%>
-
-
-Dégustations cette année :
-<%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs%>
-<%= pie_chart @degustationsregions, colors: @colorsdegregions%>
-
-
+  <div class="display">
+    <div class="metrics-section">
+      <h3>Répartition des stocks : <%="#{@bouteilles.count}"%></h3>
+      <%= pie_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD']%>
+      <%= pie_chart @bouteillescouleurs, colors: @colorscouleurs%>
+      <%= pie_chart  @bouteillesregions, colors: @colorsregions%>
+      <h3>Evolution des stocks :</h3>
+      <%= line_chart Bouteille.daily_stock, colors: ['#E5044B']%>
+    </div>
+    <div class="metrics-section">
+      <h3>Achats cette année : <%="#{@bouteillesachat.count}"%></h3>
+      <%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs%>
+      <%= pie_chart @bouteillesachatregions, colors: @colorsachatregions%>
+    </div>
+    <div class="metrics-section">
+      <h3>Dégustations cette année : <%="#{@degustations.count}"%></h3>
+      <%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs%>
+      <%= pie_chart @degustationsregions, colors: @colorsdegregions%>
+    </div>
+  </div>
 </div>

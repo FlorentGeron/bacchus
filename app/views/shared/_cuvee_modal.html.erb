@@ -1,5 +1,5 @@
 <div class="modal" data-cuvee-modal-target = "displayNone">
-  <div class= "modal-container" data-cuvee-modal-target="openModal">
+  <div class= "display" data-cuvee-modal-target="openModal">
     <div class="modal-section">
       <div class="bacchus-button-filter" data-action= "click->cuvee-modal#closeModal">Retour</div>
     </div>
@@ -12,7 +12,7 @@
     <div class="modal-section">
       <div class="price">
         acheté : <%= cuvee.prix_moyen%> €
-        cote actuelle :<%= cuvee.prix_actuel%> €
+        cote actuelle :<%= cuvee.prix_moyen%> €
       </div>
       <%if cuvee.date_deg_max.blank? %>
         A déguster à partir de <%= cuvee.date_deg_min.year%>
