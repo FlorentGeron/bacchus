@@ -9,12 +9,12 @@
       <%= line_chart Bouteille.daily_stock, colors: ['#E5044B']%>
     </div>
     <div class="metrics-section">
-      <h3>Achats cette année :</h3>
+      <h3>Achats cette année : <%="#{@bouteillesachat.count}"%></h3>
       <%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs%>
       <%= pie_chart @bouteillesachatregions, colors: @colorsachatregions%>
     </div>
     <div class="metrics-section">
-      <h3>Dégustations cette année :</h3>
+      <h3>Dégustations cette année : <%="#{@degustations.count}"%></h3>
       <%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs%>
       <%= pie_chart @degustationsregions, colors: @colorsdegregions%>
     </div>
