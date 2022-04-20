@@ -1,45 +1,47 @@
 <div class= "container" data-controller = "cuvee-index">
-  <div class = "search-block">
-    <form novalidate="novalidate" class="simple_form search mb-1" action="/cuvees" accept-charset="UTF-8" method="get" data-cuvee-index-target = "form"><input name="utf8" type="hidden" value="&#x2713;"/>
-      <div class="search-form-control">
-        <div class = "d-flex align-items-start justify-content-between form-group">
-          <div class="col-3">
-              <select class="form-select form-control" name="search[cave]" id="search_cave" data-action="input->cuvee-index#filterresults" data-cuvee-index-target="cave">
-                <option value="">Cave</option>
-                <%Cave.includes(:user).where(user: current_user).each do |cave|%>
-                <option <%= cave.nom == @search_params[:cave] ? "selected" : "" %>><%=cave.nom%></option>
-                <%end%>
-              </select>
+  <div class="display">
+    <div class = "search-block">
+      <form novalidate="novalidate" class="simple_form search mb-1" action="/cuvees" accept-charset="UTF-8" method="get" data-cuvee-index-target = "form"><input name="utf8" type="hidden" value="&#x2713;"/>
+        <div class="search-form-control">
+          <div class = "d-flex align-items-start justify-content-between form-group">
+            <div class="col-3">
+                <select class="form-select form-control" name="search[cave]" id="search_cave" data-action="input->cuvee-index#filterresults" data-cuvee-index-target="cave">
+                  <option value="">Cave</option>
+                  <%Cave.includes(:user).where(user: current_user).each do |cave|%>
+                  <option <%= cave.nom == @search_params[:cave] ? "selected" : "" %>><%=cave.nom%></option>
+                  <%end%>
+                </select>
+            </div>
+            <div class="col-3">
+                <select class="form-select form-control" name="search[couleur]" id="search_couleur" data-action="input->cuvee-index#filterresults" data-cuvee-index-target="couleur">
+                  <option value="">Couleur</option>
+                  <% @couleurs.each do |couleur|%>
+                  <option <%= couleur == @search_params[:couleur] ? "selected" : "" %>><%=couleur%></option>
+                  <%end%>
+                </select>
+            </div>
+            <div class="col-3">
+                <select class="form-select form-control" name="search[region]" id="search_region" data-action="input->cuvee-index#filterresults" data-cuvee-index-target="region">
+                  <option value="">Région</option>
+                  <% @regions.each do |region|%>
+                  <option <%= region == @search_params[:region] ? "selected" : "" %>><%=region%></option>
+                  <%end%>
+                </select>
+            </div>
+            <%= link_to cuvees_path do%>
+              <button name="button" class="bacchus-button-filter">
+                <i class="fas fa-redo"></i>
+              </button>
+            <%end%>
+            </div>
+          <div class="mt-3 d-flex align-items-start justify-content-between form-group">
+          <input class="form-control string required" type="text" name="search[keyword]" id="search_keyword" data-action = "keyup->cuvee-index#filterresults" value="<%= @search_params[:keyword].present? ? @search_params[:keyword] : "" %>" data-cuvee-index-target="keyword"/>
           </div>
-          <div class="col-3">
-              <select class="form-select form-control" name="search[couleur]" id="search_couleur" data-action="input->cuvee-index#filterresults" data-cuvee-index-target="couleur">
-                <option value="">Couleur</option>
-                <% @couleurs.each do |couleur|%>
-                <option <%= couleur == @search_params[:couleur] ? "selected" : "" %>><%=couleur%></option>
-                <%end%>
-              </select>
-          </div>
-          <div class="col-3">
-              <select class="form-select form-control" name="search[region]" id="search_region" data-action="input->cuvee-index#filterresults" data-cuvee-index-target="region">
-                <option value="">Région</option>
-                <% @regions.each do |region|%>
-                <option <%= region == @search_params[:region] ? "selected" : "" %>><%=region%></option>
-                <%end%>
-              </select>
-          </div>
-          <%= link_to cuvees_path do%>
-            <button name="button" class="bacchus-button-filter">
-              <i class="fas fa-redo"></i>
-            </button>
-          <%end%>
-          </div>
-        <div class="mt-3 d-flex align-items-start justify-content-between form-group">
-        <input class="form-control string required" type="text" name="search[keyword]" id="search_keyword" data-action = "keyup->cuvee-index#filterresults" value="<%= @search_params[:keyword].present? ? @search_params[:keyword] : "" %>" data-cuvee-index-target="keyword"/>
         </div>
-      </div>
-    </form>
-  </div>
-  <div class = "display-results" data-cuvee-index-target = "displayResults">
-    Merci d'utiliser les filtres et la recherche pour afficher des cuvées
+      </form>
+    </div>
+    <div class = "display-results" data-cuvee-index-target = "displayResults">
+      Merci d'utiliser les filtres et la recherche pour afficher des cuvées
+    </div>
   </div>
 </div>
