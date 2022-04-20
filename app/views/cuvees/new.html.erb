@@ -1,17 +1,20 @@
 <div class= "container">
-<%= simple_form_for(@cuvee) do |f|%>
-  <% if params[:format].present?%>
-    <%=f.association :appellation, as: :hidden %>
-    <%=f.input  :domaine, as: :hidden%>
-    <%=f.input :cuvee, as: :hidden%>
-  <%else%>
-    <%=f.association :appellation %>
-    <%=f.input  :domaine%>
-    <%=f.input :cuvee%>
-  <%end%>
-  <%= f.input :annee, as: :date, html5: true%>
-  <%= f.input :date_deg_min, as: :date, html5: true %>
-  <%= f.input :date_deg_max, as: :date, html5: true%>
-  <%= f.submit %>
-<%end%>
+  <div class="display">
+    <%= simple_form_for(@cuvee) do |f|%>
+      <% if params[:format].present?%>
+        <%=f.association :appellation, as: :hidden %>
+        <%=f.input  :domaine, as: :hidden%>
+        <%=f.input :cuvee, as: :hidden%>
+      <%else%>
+        <%=f.association :appellation %>
+        <%=f.input  :domaine%>
+        <%=f.input :cuvee%>
+      <%end%>
+      <%= f.input :annee, as: :date, html5: true%>
+      <%= f.input :date_deg_min, as: :date, html5: true %>
+      <%= f.input :date_deg_max, as: :date, html5: true%>
+      <%= f.submit %>
+    <%end%>
+    <%= link_to "Abandonner", new_bouteille_path%>
+  </div>
 </div>
