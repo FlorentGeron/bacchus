@@ -1,11 +1,15 @@
 <div class="container">
-  <%=simple_form_for @cave do |f|%>
-    <%=f.input :nom%>
-    <%=f.input :localisation%>
-    <%=f.input :capacité%>
-    <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
-  <%end%>
-  <%=link_to settings_path do%>
-    <div class="bacchus-button-filter">Retour</div>
-  <%end%>
+  <div class="display">
+    <%=simple_form_for @cave do |f|%>
+      <%=f.input :nom%>
+      <%=f.input :localisation%>
+      <%=f.input :capacité%>
+      <div class="cuvee-preview-details">
+      <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
+    <%end%>
+    <%=link_to settings_path do%>
+      <div class="bacchus-button-filter">Retour</div>
+    <%end%>
+    </div>
+  </div>
 </div>
