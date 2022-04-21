@@ -7,7 +7,6 @@ class BouteillesController < ApplicationController
     else
       @cuveesforsearch = [["#{Cuvee.last.domaine} #{Cuvee.last.cuvee} #{Cuvee.last.annee.year}", Cuvee.last.id]]
     end
-
     @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
 
     respond_to do |format|
@@ -68,22 +67,22 @@ class BouteillesController < ApplicationController
     @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).joins(:cave).where("statut= 'à boire' AND caves.user_id = #{current_user.id}")
     @degustations = Degustation.joins(:bouteille => [{:cuvee => :appellation}, :cave]).where("date_deg > ? AND caves.user_id = ?", Date.new(2022,01,01), current_user.id)
     @bouteillesachat = @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31))
-    #Variables data & colors pour pie chart stock par couleur
+    # Variables data & colors pour pie chart stock par couleur
     @bouteillescouleurs = @bouteilles.joins(:cuvee => :appellation).group(:couleur).count
     @colorscouleurs = define_colors(@bouteillescouleurs, "couleur")
-    #Variables data & colors pour pie chart achat par couleur
+    # Variables data & colors pour pie chart achat par couleur
     @bouteillesachatcouleurs = @bouteillesachat.group(:couleur).count
     @colorsachatcouleurs = define_colors(@bouteillesachatcouleurs, "couleur")
-    #Variables data & colors pour pie char degustations par couleur
+    # Variables data & colors pour pie char degustations par couleur
     @degustationscouleurs = @degustations.group(:couleur).count
     @colorsdegcouleurs = define_colors(@degustationscouleurs, "couleur")
-    #Variables data & colors pour pie chart par region
+    # Variables data & colors pour pie chart par region
     @bouteillesregions = @bouteilles.joins(:cuvee => :appellation).group(:region).count
     @colorsregions = define_colors(@bouteillesregions, "region")
-    #Variables data & colors pour pie chart achat par region
+    # Variables data & colors pour pie chart achat par region
     @bouteillesachatregions = @bouteillesachat.group(:region).count
     @colorsachatregions = define_colors(@bouteillesachatregions, "region")
-    #Variables data & colors pour pie char degustations par couleur
+    # Variables data & colors pour pie char degustations par couleur
     @degustationsregions = @degustations.group(:region).count
     @colorsdegregions = define_colors(@degustationsregions, "region")
   end
@@ -95,9 +94,7 @@ private
   end
 
   def create_params
-    if params[:create]
-      params.require(:create).permit(:number)
-    end
+      params.require(:create).permit(:number) if params[:create]
   end
 
   def filter_cuvees
@@ -107,14 +104,10 @@ private
   def define_colors(data, type)
     result = []
     if type == "couleur"
-      data.each do |p,_|
-        result << Appellation::COULEURCOLORS[p.to_sym]
-      end
+      data.each { |p, _| result << Appellation::COULEURCOLORS[p.to_sym] }
     else
-      data.each do |p,_|
-        result << Appellation::REGIONCOLORS[p.to_sym]
-      end
+      data.each { |p, _| result << Appellation::REGIONCOLORS[p.to_sym] }
     end
-    return result
+    result
   end
 end
