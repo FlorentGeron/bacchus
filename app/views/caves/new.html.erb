@@ -3,7 +3,7 @@
     <%=f.input :nom%>
     <%=f.input :localisation%>
     <%=f.input :capacité%>
-    <%=f.submit%>
+    <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
   <%end%>
   <%=link_to settings_path do%>
     <div class="bacchus-button-filter">Retour</div>
