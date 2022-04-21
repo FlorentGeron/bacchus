@@ -30,10 +30,11 @@
       </div>
     <% end %>
 
-    <h3>Supprimer mon compte</h3>
 
-    <p>Insatisfait ? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p>Insatisfait ? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-    <%= link_to "Back", :back %>
+    <%= link_to :back do%>
+    <button class="bacchus-button-filter">Retour</button>
+    <%end%>
   </div>
 </div>
