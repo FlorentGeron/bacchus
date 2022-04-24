@@ -17,3 +17,17 @@ ul {
   list-style-type: none;
   color: $bacchus-dark;
 }
+
+.container-image{
+  background-image: image-url("cellar_dark.jpeg");
+  color: $bacchus-background;
+  background-size: cover;
+  min-height:80vh;
+  display:flex;
+}
+
+.text-on-image{
+  margin : 0 auto;
+  justify-self: center;
+  align-self:center;
+}
