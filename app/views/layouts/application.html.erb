@@ -13,10 +13,10 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar' if user_signed_in?%>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
-    <%= render 'shared/bottom_navbar' %>
+    <%= render 'shared/bottom_navbar' if user_signed_in?%>
   </body>
 </html>
