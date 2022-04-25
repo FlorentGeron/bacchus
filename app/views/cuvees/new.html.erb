@@ -13,8 +13,12 @@
       <%= f.input :annee, as: :date, html5: true%>
       <%= f.input :date_deg_min, as: :date, html5: true %>
       <%= f.input :date_deg_max, as: :date, html5: true%>
-      <%= f.submit %>
-    <%end%>
-    <%= link_to "Abandonner", new_bouteille_path%>
+      <div class="cuvee-preview-details">
+        <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
+      <%end%>
+      <%= link_to new_bouteille_path do%>
+      <button class= "bacchus-button-filter"%>Abandonner</button>
+      <%end%>
+    </div>
   </div>
 </div>

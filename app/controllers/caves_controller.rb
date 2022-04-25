@@ -1,7 +1,7 @@
 class CavesController < ApplicationController
 
   def new
-    @cave= Cave.new
+    @cave = Cave.new
   end
 
   def create
