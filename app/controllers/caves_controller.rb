@@ -9,7 +9,7 @@ class CavesController < ApplicationController
     @cave.user = current_user
     if @cave.save
       flash[:alert] = "Cave créée!"
-      redirect_to root_path
+      redirect_to new_bouteille_path
     else
       flash[:alert] = "Merci de revoir les informations"
       render new
