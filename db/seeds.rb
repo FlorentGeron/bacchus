@@ -18,7 +18,8 @@ User.destroy_all
 Cuvee.destroy_all
 Appellation.destroy_all
 
-puts "creating 2 users"
+
+puts "creating 3 users"
 me = User.create!(
   email: "master@bacchus.com",
   password: "000000"
@@ -29,9 +30,14 @@ you = User.create!(
   password:"000000"
 )
 
+demo = User.create!(
+  email:"demo@bacchus.com",
+  password:"demoTour"
+)
+
 puts "created #{User.count}  #{'user'.pluralize(User.count)}"
 
-puts "creating 3 caves"
+puts "creating 4 caves"
 orleans = Cave.create!(
   nom: "Orleans",
   localisation: "Orleans",
@@ -51,6 +57,13 @@ sologne = Cave.create!(
   localisation: "Selles Saint Denis",
   capacité: 120,
   user: me
+)
+
+macave = Cave.create!(
+  nom: "Ma Cave",
+  localisation: "Piroulet la Girouette",
+  capacité: 1000,
+  user: demo
 )
 
 puts "created #{Cave.count}  #{'user'.pluralize(Cave.count)}"
