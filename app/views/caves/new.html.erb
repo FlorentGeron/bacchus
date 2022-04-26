@@ -1,5 +1,7 @@
 <div class="container">
   <div class="display">
+      <h1><%= "Bienvenue dans Bacchus !" if current_user.caves.count==0%></h1>
+     <h2>Créer une cave</h2>
     <%=simple_form_for @cave do |f|%>
       <%=f.input :nom%>
       <%=f.input :localisation%>
