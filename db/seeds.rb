@@ -99,11 +99,12 @@ csv_parsed.each do |row|
   c.save!
 end
 
+
 puts "created #{Cuvee.count}  #{'cuvee'.pluralize(Cuvee.count)}"
 
-puts "creating Bouteilles from csv!"
+puts "creating Bouteilles from csv files"
 
-csv_path = "lib/assets/Bouteilles.csv"
+csv_path = "lib/assets/user/Bouteilles.csv"
 csv_read = File.read(csv_path)
 csv_parse = CSV.parse(csv_read, :headers => true)
 csv_parse.each do |row|
@@ -118,11 +119,27 @@ csv_parse.each do |row|
   b.save!
 end
 
+csv_demo_path = "lib/assets/demo/Bouteilles.csv"
+csv_demo_read = File.read(csv_demo_path)
+csv_demo_parse = CSV.parse(csv_demo_read, :headers => true)
+csv_demo_parse.each do |row|
+  bd = Bouteille.new
+  bd.cuvee = Cuvee.find(row['Cuvee'].to_i)
+  bd.cave = Cave.find(row['Cave'].to_i)
+  bd.emplacement1 = row['Emplacement']
+  bd.date_achat = Date.parse(row['Ajouté_le'])
+  bd.statut = row['statut']
+  bd.provenance = row['Provenance']
+  bd.prix = row['Prix'].to_f
+  bd.save!
+end
+
+
 puts "created #{Bouteille.count}  #{'bouteille'.pluralize(Bouteille.count)}"
 
-puts "creating degustations now"
+puts "creating degustations from csv files"
 
-csv_degs = "lib/assets/Degustations.csv"
+csv_degs = "lib/assets/user/Degustations.csv"
 csv_source_degs = File.read(csv_degs)
 csv_parse_degs = CSV.parse(csv_source_degs, :headers => true)
 csv_parse_degs.each do |row|
@@ -132,6 +149,18 @@ csv_parse_degs.each do |row|
   d.commentaire = row['Commentaire']
   d.note_cuvee = 4
   d.save!
+end
+
+csv_demo_degs = "lib/assets/user/Degustations.csv"
+csv_source_demo_degs = File.read(csv_demo_degs)
+csv_parse_demo_degs = CSV.parse(csv_source_demo_degs, :headers => true)
+csv_parse_demo_degs.each do |row|
+  dd = Degustation.new
+  dd.bouteille = Bouteille.find(row['Bouteille_id'].to_i)
+  dd.date_deg = Date.parse(row['Date_deg'])
+  dd.commentaire = row['Commentaire']
+  dd.note_cuvee = 4
+  dd.save!
 end
 
 puts "created #{Degustation.count}  #{'degustation'.pluralize(Degustation.count)}"
