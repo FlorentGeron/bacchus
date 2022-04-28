@@ -12,10 +12,6 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "form", "cave", "couleur", "region", "keyword", "displayResults" ]
 
-  connect() {
-    console.log( 'Hello, Stimulus!')
-  }
-
   filterresults(){
     console.log(this.couleurTarget.value)
     console.log(this.formTarget.action)
