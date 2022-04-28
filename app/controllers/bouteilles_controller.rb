@@ -1,5 +1,4 @@
 class BouteillesController < ApplicationController
-
   def new
     @bouteille = Bouteille.new
     if params[:keyword].present?
@@ -87,18 +86,18 @@ class BouteillesController < ApplicationController
     @colorsdegregions = define_colors(@degustationsregions, "region")
   end
 
-private
+  private
 
   def bouteille_params
     params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance)
   end
 
   def create_params
-      params.require(:create).permit(:number) if params[:create]
+    params.require(:create).permit(:number) if params[:create]
   end
 
   def filter_cuvees
-    cuvees = Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%") unless params[:keyword].blank?
+    Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%") unless params[:keyword].blank?
   end
 
   def define_colors(data, type)
