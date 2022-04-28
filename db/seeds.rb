@@ -119,7 +119,7 @@ csv_parse.each do |row|
   b.save!
 end
 
-csv_demo_path = "lib/assets/demo/Bouteilles.csv"
+csv_demo_path = "lib/assets/demo/Demo_Bouteilles.csv"
 csv_demo_read = File.read(csv_demo_path)
 csv_demo_parse = CSV.parse(csv_demo_read, :headers => true)
 csv_demo_parse.each do |row|
@@ -151,7 +151,7 @@ csv_parse_degs.each do |row|
   d.save!
 end
 
-csv_demo_degs = "lib/assets/user/Degustations.csv"
+csv_demo_degs = "lib/assets/user/Demo_Degustations.csv"
 csv_source_demo_degs = File.read(csv_demo_degs)
 csv_parse_demo_degs = CSV.parse(csv_source_demo_degs, :headers => true)
 csv_parse_demo_degs.each do |row|
