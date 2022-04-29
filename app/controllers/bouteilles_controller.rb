@@ -17,17 +17,7 @@ class BouteillesController < ApplicationController
   def create
     @number = create_params[:number].to_i
     @number.times do
-      @bouteille = Bouteille.new(
-        cuvee: Cuvee.find(bouteille_params[:cuvee].to_i),
-        cave: Cave.find(bouteille_params[:cave].to_i),
-        statut: "à boire",
-        emplacement1: bouteille_params[:emplacement1],
-        emplacement2: bouteille_params[:emplacement2],
-        emplacement3: bouteille_params[:emplacement3],
-        date_achat: bouteille_params[:date_achat],
-        prix: bouteille_params[:prix].to_f,
-        provenance: bouteille_params[:provenance]
-      )
+      @bouteille = create_bouteille_from_params
       @bouteille.save
     end
     redirect_to cuvees_path
@@ -108,5 +98,19 @@ class BouteillesController < ApplicationController
       data.each { |p, _| result << Appellation::REGIONCOLORS[p.to_sym] }
     end
     result
+  end
+
+  def create_bouteille_from_params
+    Bouteille.new(
+      cuvee: Cuvee.find(bouteille_params[:cuvee].to_i),
+      cave: Cave.find(bouteille_params[:cave].to_i),
+      statut: "à boire",
+      emplacement1: bouteille_params[:emplacement1],
+      emplacement2: bouteille_params[:emplacement2],
+      emplacement3: bouteille_params[:emplacement3],
+      date_achat: bouteille_params[:date_achat],
+      prix: bouteille_params[:prix].to_f,
+      provenance: bouteille_params[:provenance]
+    )
   end
 end
