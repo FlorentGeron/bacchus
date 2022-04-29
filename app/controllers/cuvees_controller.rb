@@ -29,14 +29,9 @@ class CuveesController < ApplicationController
     @search_params = {}
     @couleurs = Appellation.all.map(&:couleur).uniq
     @regions = Appellation.all.map(&:region).uniq
-    if search_params.present?
-      @search_params = search_params
-      @cuvees = filter_cuvees.limit(20)
-      @cave = Cave.find_by("caves.nom ILIKE ?", "%#{search_params[:cave]}%")
-    else
-      cuvees = Cuvee.includes(:appellation, {:bouteilles => :degustations}, :caves)
-      @cuvees = cuvees.joins(:bouteilles).where("bouteilles.statut = ?", "à boire").distinct.limit(20)
-    end
+    @search_params = search_params if search_params.present?
+    @cuvees = filter_cuvees.limit(20)
+    @cave = Cave.find_by("caves.nom ILIKE ?", "%#{search_params[:cave]}%") if search_params.present?
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
@@ -69,10 +64,12 @@ class CuveesController < ApplicationController
     cuvees = Cuvee.includes(:appellation, {:bouteilles => :degustations}, :caves).joins(bouteilles: :cave).where("caves.user_id = ?", current_user.id)
     cuvees = cuvees.joins(:bouteilles).where("bouteilles.statut = ?", "à boire").distinct
     # cuvees = Cave.find_by("nom ILIKE?", "%#{search_params[:cave]}%").bouteilles.map{|bouteille| bouteille.cuvee}.uniq unless search_params[:cave].blank?
-    cuvees = cuvees.joins(:appellation).where("appellations.nom ILIKE ? OR cuvees.domaine ILIKE ? OR cuvees.cuvee ILIKE ?", "%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%") unless search_params[:keyword].blank?
-    cuvees = cuvees.joins(bouteilles: :cave).where("caves.nom LIKE ?", "#{search_params[:cave]}") unless search_params[:cave].blank?
-    cuvees = cuvees.joins(:appellation).where("appellations.region LIKE ?", "#{search_params[:region]}") unless search_params[:region].blank?
-    cuvees = cuvees.joins(:appellation).where("appellations.couleur LIKE ?", "#{search_params[:couleur]}") unless search_params[:couleur].blank?
+    if search_params.present?
+      cuvees = cuvees.joins(:appellation).where("appellations.nom ILIKE ? OR cuvees.domaine ILIKE ? OR cuvees.cuvee ILIKE ?", "%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%") unless search_params[:keyword].blank?
+      cuvees = cuvees.joins(bouteilles: :cave).where("caves.nom LIKE ?", "#{search_params[:cave]}") unless search_params[:cave].blank?
+      cuvees = cuvees.joins(:appellation).where("appellations.region LIKE ?", "#{search_params[:region]}") unless search_params[:region].blank?
+      cuvees = cuvees.joins(:appellation).where("appellations.couleur LIKE ?", "#{search_params[:couleur]}") unless search_params[:couleur].blank?
+    end
     cuvees
   end
 

@@ -74,6 +74,7 @@ class BouteillesController < ApplicationController
     # Variables data & colors pour pie char degustations par couleur
     @degustationsregions = @degustations.group(:region).count
     @colorsdegregions = define_colors(@degustationsregions, "region")
+    @daily_stock = dailystock
   end
 
   private
@@ -112,5 +113,19 @@ class BouteillesController < ApplicationController
       prix: bouteille_params[:prix].to_f,
       provenance: bouteille_params[:provenance]
     )
+  end
+
+  def dailystock
+    source_for_chart = []
+    stock = Bouteille.all.joins(:cave).where("caves.user_id = ?", current_user.id)
+    stock.each do |bouteille|
+      source_for_chart << [bouteille.date_achat, 1]
+    end
+    degustations = Degustation.all.joins(:bouteille => :cave).where("caves.user_id = ?", current_user.id)
+    degustations.each do |degustation|
+      source_for_chart << [degustation.date_deg, -1]
+    end
+    sum = 0
+    source_for_chart.sort_by{|bouteille| bouteille.first}.map{ |x,y| [x, (sum += y)] }
   end
 end

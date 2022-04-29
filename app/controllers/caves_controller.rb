@@ -21,5 +21,4 @@ class CavesController < ApplicationController
   def cave_params
     params.require(:cave).permit(:nom, :localisation, :capacité)
   end
-
 end
