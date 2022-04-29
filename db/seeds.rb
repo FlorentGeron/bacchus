@@ -18,7 +18,6 @@ User.destroy_all
 Cuvee.destroy_all
 Appellation.destroy_all
 
-
 puts "creating 3 users"
 me = User.create!(
   email: "master@bacchus.com",
@@ -133,7 +132,6 @@ csv_demo_parse.each do |row|
   bd.prix = row['Prix'].to_f
   bd.save!
 end
-
 
 puts "created #{Bouteille.count}  #{'bouteille'.pluralize(Bouteille.count)}"
 

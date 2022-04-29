@@ -1,5 +1,4 @@
 class BouteillesController < ApplicationController
-
   def new
     @bouteille = Bouteille.new
     if params[:keyword].present?
@@ -18,17 +17,7 @@ class BouteillesController < ApplicationController
   def create
     @number = create_params[:number].to_i
     @number.times do
-      @bouteille = Bouteille.new(
-        cuvee: Cuvee.find(bouteille_params[:cuvee].to_i),
-        cave: Cave.find(bouteille_params[:cave].to_i),
-        statut: "à boire",
-        emplacement1: bouteille_params[:emplacement1],
-        emplacement2: bouteille_params[:emplacement2],
-        emplacement3: bouteille_params[:emplacement3],
-        date_achat: bouteille_params[:date_achat],
-        prix: bouteille_params[:prix].to_f,
-        provenance: bouteille_params[:provenance]
-      )
+      @bouteille = create_bouteille_from_params
       @bouteille.save
     end
     redirect_to cuvees_path
@@ -85,20 +74,21 @@ class BouteillesController < ApplicationController
     # Variables data & colors pour pie char degustations par couleur
     @degustationsregions = @degustations.group(:region).count
     @colorsdegregions = define_colors(@degustationsregions, "region")
+    @daily_stock = dailystock
   end
 
-private
+  private
 
   def bouteille_params
     params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance)
   end
 
   def create_params
-      params.require(:create).permit(:number) if params[:create]
+    params.require(:create).permit(:number) if params[:create]
   end
 
   def filter_cuvees
-    cuvees = Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%") unless params[:keyword].blank?
+    Cuvee.where("domaine ILIKE ? OR cuvee ILIKE ?", "%#{params[:keyword]}%", "%#{params[:keyword]}%") unless params[:keyword].blank?
   end
 
   def define_colors(data, type)
@@ -109,5 +99,33 @@ private
       data.each { |p, _| result << Appellation::REGIONCOLORS[p.to_sym] }
     end
     result
+  end
+
+  def create_bouteille_from_params
+    Bouteille.new(
+      cuvee: Cuvee.find(bouteille_params[:cuvee].to_i),
+      cave: Cave.find(bouteille_params[:cave].to_i),
+      statut: "à boire",
+      emplacement1: bouteille_params[:emplacement1],
+      emplacement2: bouteille_params[:emplacement2],
+      emplacement3: bouteille_params[:emplacement3],
+      date_achat: bouteille_params[:date_achat],
+      prix: bouteille_params[:prix].to_f,
+      provenance: bouteille_params[:provenance]
+    )
+  end
+
+  def dailystock
+    source_for_chart = []
+    stock = Bouteille.all.joins(:cave).where("caves.user_id = ?", current_user.id)
+    stock.each do |bouteille|
+      source_for_chart << [bouteille.date_achat, 1]
+    end
+    degustations = Degustation.all.joins(:bouteille => :cave).where("caves.user_id = ?", current_user.id)
+    degustations.each do |degustation|
+      source_for_chart << [degustation.date_deg, -1]
+    end
+    sum = 0
+    source_for_chart.sort_by{|bouteille| bouteille.first}.map{ |x,y| [x, (sum += y)] }
   end
 end

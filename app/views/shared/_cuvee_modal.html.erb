@@ -21,9 +21,9 @@
       <%end%>
     </div>
     <div class="modal-section">
-      <%if cuvee.degustations.uniq.count > 0 %>
-        <%=cuvee.degustations.uniq.count%> <%="dégustation".pluralize(cuvee.degustations.uniq.count)%> (note moyenne : <%= cuvee.average_grade%>)
-        <%cuvee.degustations.uniq.each do |degustation|%>
+      <%if cuvee.degustations.joins(:bouteille => :cave).where("caves.user_id = ?", current_user.id).uniq.count > 0 %>
+        <%=cuvee.degustations.joins(:bouteille => :cave).where("caves.user_id = ?", current_user.id).uniq.count%> <%="dégustation".pluralize(cuvee.degustations.uniq.count)%> (note moyenne : <%= cuvee.average_grade%>)
+        <%cuvee.degustations.joins(:bouteille => :cave).where("caves.user_id = ?", current_user.id).uniq.each do |degustation|%>
           <div class="degustation-preview">
           <div class="title-card"><%=degustation.date_deg.strftime("%d.%m.%y")%></div>
           <%=degustation.note_cuvee%>
@@ -36,8 +36,8 @@
     </div>
     <div class="modal-section">
       <% if @cave.blank? %>
-        <%=cuvee.bouteillesaboire.count%> <%="bouteille".pluralize(cuvee.bouteillesaboire.count)%>
-        <% cuvee.bouteillesaboire.includes([:cave]).each do |bouteille|%>
+        <%=cuvee.bouteillesaboire.joins(:cave).where("caves.user_id = ?", current_user.id).count%> <%="bouteille".pluralize(cuvee.bouteillesaboire.count)%>
+        <% cuvee.bouteillesaboire.includes([:cave]).joins(:cave).where("caves.user_id = ?", current_user.id).each do |bouteille|%>
           <%=render 'shared/bottle_preview', bouteille: bouteille %>
         <%end%>
       <%else%>

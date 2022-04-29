@@ -16,7 +16,7 @@
               <%= cuvee.appellation.nom%>
               <div class="sticker">
                 <% if @search_params[:cave].blank? %>
-                  <%=cuvee.bouteillesaboire.count%>
+                  <%=cuvee.bouteillesaboire.joins(:cave).where("caves.user_id = ?", current_user.id).count%>
                 <%else %>
                   <%= @cave.bouteillesaboire.where(cuvee: cuvee).count%>
                 <%end%>

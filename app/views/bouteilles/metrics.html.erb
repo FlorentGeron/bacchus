@@ -6,7 +6,7 @@
       <%= pie_chart @bouteillescouleurs, colors: @colorscouleurs%>
       <%= pie_chart  @bouteillesregions, colors: @colorsregions%>
       <h3>Evolution des stocks :</h3>
-      <%= line_chart Bouteille.daily_stock, colors: ['#E5044B']%>
+      <%= line_chart @daily_stock, colors: ['#E5044B']%>
     </div>
     <div class="metrics-section">
       <h3>Achats cette année : <%="#{@bouteillesachat.count}"%></h3>
