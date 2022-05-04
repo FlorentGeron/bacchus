@@ -16,7 +16,7 @@
         <%=image_tag "pen_red.png", class:"icon-link"%>
       <%end%>
       <%= simple_form_for(bouteille) do |f|%>
-        <%= f.input :statut, label:false, input_html: {:"class" => "d-none", :"value"=> "#{@set_statut}"} %>
+        <%= f.input :statut, label:false, input_html: {:"class" => "d-none", :"value"=> bouteille.statut == "mise de côté" ? "à boire" : "mise de côté"} %>
         <button type="submit" style = "width: auto">
           <%=image_tag "bottle_export.png", class:"icon-link"%>
         </button>

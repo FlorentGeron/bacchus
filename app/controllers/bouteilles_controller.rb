@@ -29,7 +29,6 @@ class BouteillesController < ApplicationController
 
   def edit
     @bouteille = Bouteille.find(params[:id])
-    @set_statut = @bouteille.statut == "mise de côté" ? "à boire" : "mise de côté"
     @caves = current_user.caves
   end
 
