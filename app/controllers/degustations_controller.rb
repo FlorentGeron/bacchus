@@ -6,7 +6,8 @@ class DegustationsController < ApplicationController
 
   def create
     @degustation = Degustation.new(degustation_params)
-    @degustation.bouteille  = Bouteille.find(params[:bouteille_id])
+    @bouteille = Bouteille.find(params[:bouteille_id])
+    @degustation.bouteille = @bouteille
     if @degustation.save
       @bouteille.statut = "bue"
       @bouteille.save
