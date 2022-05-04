@@ -1,12 +1,12 @@
 class DegustationsController < ApplicationController
+  before_action :set_bouteille
+
   def new
     @degustation = Degustation.new
-    @bouteille = Bouteille.find(params[:bouteille_id])
   end
 
   def create
     @degustation = Degustation.new(degustation_params)
-    @bouteille = Bouteille.find(params[:bouteille_id])
     @degustation.bouteille = @bouteille
     if @degustation.save
       @bouteille.statut = "bue"
@@ -22,5 +22,9 @@ class DegustationsController < ApplicationController
 
   def degustation_params
     params.require(:degustation).permit(:date_deg, :plat, :note_cuvee, :commentaire, :note_accord, :commentaire_accord)
+  end
+
+  def set_bouteille
+    @bouteille = Bouteille.find(params[:bouteille_id])
   end
 end
