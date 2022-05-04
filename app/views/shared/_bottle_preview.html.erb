@@ -5,8 +5,12 @@
       <%=bouteille.emplacement1%>
       <%=bouteille.emplacement2%>
       <%=bouteille.emplacement3%>
-      Ajouté le <%=bouteille.date_achat.strftime("%d.%m.%y")%>
-      <%=bouteille.provenance%>
+      <div class="added">
+        Ajouté le <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+      </div>
+      <div class="provenance">
+        <%=bouteille.provenance%>
+      </div>
     </div>
     <div class="buttons-links">
       <%= link_to edit_bouteille_path(bouteille) do%>
