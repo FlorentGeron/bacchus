@@ -1,12 +1,16 @@
 <div class="bottle-preview">
-  <div class="title-card"><%=bouteille.cave.nom%></div>
+  <div class="title-card">
+    <%= bouteille.cuvee.cuvee%>
+    <%= bouteille.cuvee.annee.year%>
+  </div>
   <div class="bottle-details">
     <div class="localisation-fields">
+      <%= bouteille.cave.nom%>
       <%=bouteille.emplacement1%>
       <%=bouteille.emplacement2%>
       <%=bouteille.emplacement3%>
       <div class="added">
-        Ajouté le <%=bouteille.date_achat.strftime("%d.%m.%y")%>
+        Mis de côté le <%=bouteille.updated_at.strftime("%d.%m.%y")%>
       </div>
       <div class="provenance">
         <%=bouteille.provenance%>
