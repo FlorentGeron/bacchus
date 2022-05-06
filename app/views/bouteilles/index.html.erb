@@ -1,5 +1,7 @@
 <div class= "container">
-  <% @bouteilles.each do |bouteille|%>
-  <%=render 'shared/extracted_preview', bouteille: bouteille %>
-  <%end%>
+  <div class="display">
+    <% @bouteilles.each do |bouteille|%>
+    <%=render 'shared/extracted_preview', bouteille: bouteille %>
+    <%end%>
+  </div>
 </div>
