@@ -5,7 +5,7 @@ Une appli de gestion de cave à vin permettant de réviser quelques features :
 - Formulaires AJAXifiés
 - Metrics de stocks-achat-consommation (Chartkick, Ruby)
 
-testable ICI : http://wwww.bacchus-app.com
+testable ICI : http://www.bacchus-app.com
 Compte démo : demo@bacchus.com
 mdp : 000000
 
