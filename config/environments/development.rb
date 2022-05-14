@@ -81,7 +81,7 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-   # Allow requests for ngrok
-   config.hosts << /[a-z0-9\-]+\.ngrok\.io/
+  # Allow requests for ngrok
+  config.hosts << /[a-z0-9\-]+\.ngrok\.io/
 
 end
