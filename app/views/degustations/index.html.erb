@@ -1,6 +1,6 @@
 <div class="container">
   <div class="display">
-    <%= @degustations.each do |degustation| %>
+    <% @degustations.each do |degustation| %>
       <%= render 'shared/degustation_preview', degustation: degustation%>
     <%end%>
   </div>
