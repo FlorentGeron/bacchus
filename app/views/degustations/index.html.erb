@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="display">
+    <%= @degustations.each |degustation| do %>
+      <%= render 'shared/degustation_preview' degustation: degustation%>
+    <%end%>
+  </div>
+</div>
