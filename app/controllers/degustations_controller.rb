@@ -1,8 +1,8 @@
 class DegustationsController < ApplicationController
-  before_action :set_bouteille
+  before_action :set_bouteille, except: :index
 
   def index
-    @degustations = Degustation.joins(:bouteille => [{:cuvee => :appellation}, :cave]).where("date_deg > ? AND caves.user_id = ?", Date.new(2022,01,01), current_user.id)
+    @degustations = Degustation.joins(:bouteille => [{:cuvee => :appellation}, :cave]).where("date_deg > ? AND caves.user_id = ?", Date.new(2022,01,01), current_user.id).order(date_deg: :desc)
   end
 
   def new
