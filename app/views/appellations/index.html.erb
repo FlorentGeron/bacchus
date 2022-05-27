@@ -1,8 +1,10 @@
 <div class="container" data-controller="cuvee-form">
-  Merci de choisir une appellation :
-  <%= simple_form_for :search, url: appellations_path, method: "GET", html: { class: 'form-inline', :"data-cuvee-form-target"=> "form" }, remote: true do |f|%>
-    <%= f.input :keyword, input_html: {value: "", :"data-action"=>"keyup->cuvee-form#updateappellation", :"data-cuvee-form-target"=> "searchInput"} %>
-  <% end %>
-  <div data-cuvee-form-target="formFiltered">
+  <div class="display">
+    Merci de choisir une appellation :
+    <%= simple_form_for :search, url: appellations_path, method: "GET", html: { class: 'form-inline', :"data-cuvee-form-target"=> "form" }, remote: true do |f|%>
+      <%= f.input :keyword, input_html: {value: "", :"data-action"=>"keyup->cuvee-form#updateappellation", :"data-cuvee-form-target"=> "searchInput"} %>
+    <% end %>
+    <div data-cuvee-form-target="formFiltered">
+    </div>
   </div>
 </div>
