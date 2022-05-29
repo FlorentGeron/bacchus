@@ -10,9 +10,9 @@
         <%=f.input  :domaine%>
         <%=f.input :cuvee%>
       <%end%>
-      <%= f.input :annee, as: :date, html5: true%>
-      <%= f.input :date_deg_min, as: :date, html5: true %>
-      <%= f.input :date_deg_max, as: :date, html5: true%>
+       <%= f.input :annee, as: :date, discard_day: true, discard_month: true, start_year: Date.today.year - 37, end_year: Date.today.year %>
+       <%= f.input :date_deg_min, as: :date, discard_day: true, start_year: Date.today.year, end_year: Date.today.year + 10%>
+       <%= f.input :date_deg_max, as: :date, discard_day: true, start_year: Date.today.year, end_year: Date.today.year + 30%>
       <div class="cuvee-preview-details">
         <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
       <%end%>
