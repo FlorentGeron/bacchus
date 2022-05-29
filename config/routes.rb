@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   end
   get '/bouteilles/metrics', to: 'bouteilles#metrics', as: :metrics
   resources :bouteilles, only: :show do
-    resources :degustations, only: %i[new]
-    post '/degustations/', to: 'degustations#create', as: :create_degustations
+    resources :degustations, only: %i[new create]
+  # post '/degustations/', to: 'degustations#create', as: :create_degustations
   end
   get 'settings', to: 'pages#settings', as: :settings
 end
