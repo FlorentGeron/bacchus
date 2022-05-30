@@ -1,5 +1,6 @@
 <div class="container">
   <div class="display">
+    <h3>Dernières dégustations : </h3>
     <% @degustations.each do |degustation| %>
       <%= render 'shared/degustation_preview', degustation: degustation%>
     <%end%>
