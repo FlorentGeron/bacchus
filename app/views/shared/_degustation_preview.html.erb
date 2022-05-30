@@ -1,0 +1,8 @@
+<div class="degustation-preview">
+   <div class="title-card">
+      <%= "#{degustation.bouteille.cuvee.domaine} #{degustation.bouteille.cuvee.cuvee} #{degustation.bouteille.cuvee.annee.year}"%>
+    </div>
+    <%=degustation.date_deg.strftime("%d.%m.%y")%>
+    <%=degustation.note_cuvee%>
+    "<em><%=degustation.commentaire%></em>"
+</div>

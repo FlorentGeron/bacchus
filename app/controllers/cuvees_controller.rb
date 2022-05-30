@@ -21,6 +21,7 @@ class CuveesController < ApplicationController
       redirect_to new_bouteille_path
     else
       flash[:alert] = "Oups! Essayez encore..."
+      raise
       render 'new'
     end
   end
@@ -82,9 +83,10 @@ class CuveesController < ApplicationController
       appellation: Appellation.find(cuvee_params[:appellation_id]),
       domaine: cuvee_params[:domaine],
       cuvee: cuvee_params[:cuvee],
-      annee: cuvee_params[:annee],
-      date_deg_min: cuvee_params[:date_deg_min],
-      date_deg_max: cuvee_params[:date_deg_max]
+      annee: Date.parse("#{cuvee_params['annee(1i)']}-#{cuvee_params['annee(2i)']}-#{cuvee_params['annee(3i)']}"),
+      date_deg_min: Date.parse("#{cuvee_params['date_deg_min(1i)']}-#{cuvee_params['date_deg_min(2i)']}-#{cuvee_params['date_deg_min(3i)']}"),
+      date_deg_max: Date.parse("#{cuvee_params['date_deg_max(1i)']}-#{cuvee_params['date_deg_max(2i)']}-#{cuvee_params['date_deg_max(3i)']}"),
     )
+
   end
 end
