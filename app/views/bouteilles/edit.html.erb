@@ -1,10 +1,10 @@
 <div class="container">
   <div class="display">
     <div class="title">
-    <h3>Déplacer cette bouteille de <%= @bouteille.cuvee.domaine%> <%=@bouteille.cuvee.cuvee%></h3>
+    <h3>Déplacer cette bouteille de <%= @bouteille.cuvee.domaine%> <%=@bouteille.cuvee.cuvee%> depuis <%=@bouteille.cave.nom%></h3>
     </div>
     <%= simple_form_for @bouteille do |f|%>
-    <%= f.association :cave, collection: @caves, selected:@bouteille.cave, label_method: :nom%>
+    <%= f.association :cave, collection: @caves, label_method: :nom%>
     <%= f.input :emplacement1, default: @bouteille.emplacement1%>
     <%= f.input :emplacement2, default: @bouteille.emplacement2%>
     <%= f.input :emplacement3, default: @bouteille.emplacement3%>
