@@ -79,7 +79,7 @@ class BouteillesController < ApplicationController
   private
 
   def bouteille_params
-    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance)
+    params.require(:bouteille).permit(:statut, :cuvee, :cave_id, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance)
   end
 
   def create_params
