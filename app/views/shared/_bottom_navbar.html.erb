@@ -1,5 +1,5 @@
 <div class="bottom-bar d-flex flex-row justify-content-center px-3">
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.caves.count!=0 %>
       <%= link_to cuvees_path, class: "icon-link-navbar" do %>
         <%= image_tag 'search.png', :"class" => "icon-link"%>
         <p class="picture-caption">Accueil</p>
