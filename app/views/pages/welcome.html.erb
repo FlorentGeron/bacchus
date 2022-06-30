@@ -15,5 +15,25 @@
           <%= render 'shared/degustation_preview', degustation: degustation%>
         <%end%>
     </div>
+    <div class="metrics-section">
+      <h3>Vos derniers achats</h3>
+      <%@lastbuys.each do |cuvee|%>
+        <%= link_to cuvee_path(cuvee), {:remote => true, 'data-toggle' => 'modal'} do%>
+          <div class= "cuvee-preview">
+            <div class="title-card">
+              <%= cuvee.domaine%>
+            </div>
+            <div class= "cuvee-preview-details">
+              <%= cuvee.cuvee%>
+              <%= cuvee.annee.year%>
+              <%= cuvee.appellation.nom%>
+              <div class="sticker">
+                <%=cuvee.bouteillesaboire.joins(:cave).where("caves.user_id = ?", current_user.id).count%>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+    </div>
   </div>
 </div>
