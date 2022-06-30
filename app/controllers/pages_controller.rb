@@ -10,4 +10,7 @@ class PagesController < ApplicationController
 
   def settings
   end
+
+  def welcome
+  end
 end
