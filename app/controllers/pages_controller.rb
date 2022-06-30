@@ -12,5 +12,10 @@ class PagesController < ApplicationController
   end
 
   def welcome
+    @user = current_user
+    @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).joins(:cave).where("caves.user_id = #{current_user.id}")
+    @caves = @user.caves
+    @lastdegs = Degustation.joins(:bouteille => [{:cuvee => :appellation}, :cave]).where("date_deg > ? AND caves.user_id = ?", Date.new(2022,01,01), @user.id).order(date_deg: :desc).max(3)
+    @lastbuys = @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31))
   end
 end
