@@ -1,6 +1,19 @@
 <div class="container">
   <div class="display">
     <h3>Welcome, <%=@user.email%></h3>
-    
+    <div class="metrics-section">
+      <h3> Vous avez : <%=@caves.count%> caves </h3>
+        <ul>
+        <% @caves.each do |cave|%>
+          <li> <%=cave.nom%> </li>
+        <%end%>
+        </ul>
+    </div>
+    <div class="metrics-section">
+      <h3> Vos dernières degustations </h3>
+        <%@lastdegs.each do |degustation|%>
+          <%= render 'shared/degustation_preview', degustation: degustation%>
+        <%end%>
+    </div>
   </div>
 </div>
