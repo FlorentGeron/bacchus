@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   # post '/degustations/', to: 'degustations#create', as: :create_degustations
   end
   get 'settings', to: 'pages#settings', as: :settings
+  get 'welcome', to: 'pages#welcome', as: :welcome
 end
