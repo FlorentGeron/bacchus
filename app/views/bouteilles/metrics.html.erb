@@ -27,17 +27,52 @@
         }
       %>
       <h3>Evolution des stocks :</h3>
-      <%= line_chart @daily_stock, colors: ['#E5044B']%>
+      <%= line_chart @daily_stock, colors: ['#E5044B'],
+        library: {
+          animation: {
+            duration: 4000,
+            easing: 'linear'
+          }
+        }
+      %>
     </div>
     <div class="metrics-section">
       <h3>Achats cette année : <%="#{@bouteillesachat.count}"%></h3>
-      <%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs%>
-      <%= pie_chart @bouteillesachatregions, colors: @colorsachatregions%>
+      <%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs,
+        library: {
+          animation: {
+            duration: 4000,
+            easing: 'linear'
+          }
+        }
+      %>
+      <%= pie_chart @bouteillesachatregions, colors: @colorsachatregions,
+        library: {
+          animation: {
+            duration: 4000,
+            easing: 'linear'
+          }
+        }
+      %>
     </div>
     <div class="metrics-section">
       <h3>Dégustations cette année : <%="#{@degustations.count}"%></h3>
-      <%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs%>
-      <%= pie_chart @degustationsregions, colors: @colorsdegregions%>
+      <%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs,
+        library: {
+          animation: {
+            duration: 4000,
+            easing: 'linear'
+          }
+        }
+      %>
+      <%= pie_chart @degustationsregions, colors: @colorsdegregions,
+        library: {
+          animation: {
+            duration: 4000,
+            easing: 'linear'
+          }
+        }
+      %>
     </div>
   </div>
 </div>
