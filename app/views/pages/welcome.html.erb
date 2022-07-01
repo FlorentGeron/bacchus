@@ -3,12 +3,7 @@
     <h3>Welcome, <%=@user.email%></h3>
     <div class="metrics-section">
       <h3> Vous avez : <%=@caves.count%> caves </h3>
-        <ul>
-        <% @caves.each do |cave|%>
-          <%= pie_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD']%>
-          <li> <%=cave.nom%> </li>
-        <%end%>
-        </ul>
+          <%= bar_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD'], discrete: true%>
     </div>
     <div class="metrics-section">
       <h3> Vos dernières degustations </h3>
