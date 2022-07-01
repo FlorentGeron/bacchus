@@ -3,7 +3,20 @@
     <h3>Welcome, <%=@user.email%></h3>
     <div class="metrics-section">
       <h3> Vous avez : <%=@caves.count%> caves </h3>
-          <%= bar_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD'], discrete: true%>
+          <%= bar_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD'], discrete: true,
+          library: {
+            scales: {
+              'x': {
+                display: false,
+                grid: {
+                  display: false,
+                }
+              },
+              'y': {
+                display: false
+              }
+            }
+          }%>
     </div>
     <div class="metrics-section">
       <h3> Vos dernières degustations </h3>
