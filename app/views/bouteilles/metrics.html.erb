@@ -13,16 +13,18 @@
       <%= pie_chart @bouteillescouleurs, colors: @colorscouleurs,
         library: {
             animation: {
-              duration: 4000,
-              easing: 'linear'
+              duration: 2000,
+              easing: 'linear',
+              delay: 4000
             }
         }
       %>
       <%= pie_chart  @bouteillesregions, colors: @colorsregions,
         library: {
           animation: {
-            duration: 4000,
-            easing: 'linear'
+            duration: 2000,
+            easing: 'linear',
+            delay: 6000
           }
         }
       %>
@@ -30,8 +32,9 @@
       <%= line_chart @daily_stock, colors: ['#E5044B'],
         library: {
           animation: {
-            duration: 4000,
-            easing: 'linear'
+            duration: 2000,
+            easing: 'linear',
+            delay: 8000
           }
         }
       %>
@@ -41,16 +44,19 @@
       <%= pie_chart @bouteillesachatcouleurs, colors: @colorsachatcouleurs,
         library: {
           animation: {
-            duration: 4000,
-            easing: 'linear'
+            duration: 2000,
+            easing: 'linear',
+            delay: 10000
+
           }
         }
       %>
       <%= pie_chart @bouteillesachatregions, colors: @colorsachatregions,
         library: {
           animation: {
-            duration: 4000,
-            easing: 'linear'
+            duration: 2000,
+            easing: 'linear',
+            delay: 12000
           }
         }
       %>
@@ -60,16 +66,18 @@
       <%= pie_chart @degustationscouleurs, colors: @colorsdegcouleurs,
         library: {
           animation: {
-            duration: 4000,
-            easing: 'linear'
+            duration: 2000,
+            easing: 'linear',
+            delay: 14000
           }
         }
       %>
       <%= pie_chart @degustationsregions, colors: @colorsdegregions,
         library: {
           animation: {
-            duration: 4000,
-            easing: 'linear'
+            duration: 2000,
+            easing: 'linear',
+            delay: 16000
           }
         }
       %>
