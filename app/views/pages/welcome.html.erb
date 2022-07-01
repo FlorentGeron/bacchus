@@ -5,6 +5,7 @@
       <h3> Vous avez : <%=@caves.count%> caves </h3>
         <ul>
         <% @caves.each do |cave|%>
+          <%= pie_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD']%>
           <li> <%=cave.nom%> </li>
         <%end%>
         </ul>
