@@ -52,11 +52,12 @@ class BouteillesController < ApplicationController
   end
 
   def metrics
-    @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).joins(:cave).where("statut= 'à boire' AND caves.user_id = #{current_user.id}")
+    @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).joins(:cave).where("caves.user_id = #{current_user.id}")
+    @bouteillesaboire= @bouteilles.where("statut= 'à boire'")
     @degustations = Degustation.joins(:bouteille => [{:cuvee => :appellation}, :cave]).where("date_deg > ? AND caves.user_id = ?", Date.new(2022,01,01), current_user.id)
     @bouteillesachat = @bouteilles.joins(:cuvee => :appellation).where("date_achat > ?", Date.new(2021,12,31))
     # Variables data & colors pour pie chart stock par couleur
-    @bouteillescouleurs = @bouteilles.joins(:cuvee => :appellation).group(:couleur).count
+    @bouteillescouleurs = @bouteillesaboire.joins(:cuvee => :appellation).group(:couleur).count
     @colorscouleurs = define_colors(@bouteillescouleurs, "couleur")
     # Variables data & colors pour pie chart achat par couleur
     @bouteillesachatcouleurs = @bouteillesachat.group(:couleur).count
@@ -65,7 +66,7 @@ class BouteillesController < ApplicationController
     @degustationscouleurs = @degustations.group(:couleur).count
     @colorsdegcouleurs = define_colors(@degustationscouleurs, "couleur")
     # Variables data & colors pour pie chart par region
-    @bouteillesregions = @bouteilles.joins(:cuvee => :appellation).group(:region).count
+    @bouteillesregions = @bouteillesaboire.joins(:cuvee => :appellation).group(:region).count
     @colorsregions = define_colors(@bouteillesregions, "region")
     # Variables data & colors pour pie chart achat par region
     @bouteillesachatregions = @bouteillesachat.group(:region).count
