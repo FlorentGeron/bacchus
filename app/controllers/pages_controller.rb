@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     if user_signed_in?
-      homepath = current_user.caves.count.positive? ? cuvees_path : new_cave_path
+      homepath = current_user.caves.count.positive? ? welcome_path : new_cave_path
       redirect_to homepath
     end
   end
