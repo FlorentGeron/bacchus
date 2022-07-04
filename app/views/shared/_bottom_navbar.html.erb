@@ -2,7 +2,7 @@
   <% if user_signed_in? && current_user.caves.count!=0 %>
       <%= link_to cuvees_path, class: "icon-link-navbar" do %>
         <%= image_tag 'search.png', :"class" => "icon-link"%>
-        <p class="picture-caption">Accueil</p>
+        <p class="picture-caption">Parcourir</p>
       <% end %>
       <%= link_to bouteilles_path, class: "icon-link-navbar" do %>
         <%= image_tag 'bottle.png', :"class" => "icon-link"%>
