@@ -1,8 +1,8 @@
 <div class="container">
   <div class="display">
     <div class="metrics-section">
-      <h3>Répartition des stocks : <%="#{@bouteilles.count}"%></h3>
-      <%= pie_chart @bouteilles.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD'],
+      <h3>Répartition des stocks : <%="#{@bouteillesaboire.count}"%></h3>
+      <%= pie_chart @bouteillesaboire.joins(:cave).group(:nom).count, colors: ['#E5044B','#67103C','#FAECDD'],
         library: {
           animation: {
             duration: 4000,
