@@ -3,8 +3,6 @@ class CreateWishlists < ActiveRecord::Migration[6.1]
     create_table :wishlists do |t|
       t.references :user, null: false, foreign_key: true
       t.string :name
-      t.references :bouteille, null: false, foreign_key: true
-
       t.timestamps
     end
   end

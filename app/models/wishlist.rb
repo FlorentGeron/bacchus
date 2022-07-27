@@ -1,4 +1,4 @@
 class Wishlist < ApplicationRecord
   belongs_to :user
-  has_many :bouteille
+  has_many :bouteilles
 end
