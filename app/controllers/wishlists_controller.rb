@@ -2,6 +2,7 @@ class WishlistsController < ApplicationController
 
   def new
     @wishlist = Wishlist.new
+    render 'shared/_new_wishlist_modal.html'
   end
 
   def create
