@@ -9,6 +9,6 @@ class Bouteille < ApplicationRecord
     self.statut = "à boire"
   end
 
-  
+
 
 end
