@@ -5,22 +5,26 @@ class WishlistsController < ApplicationController
   end
 
   def create
+    @wishlist = Wishlist.new(wishlist_params)
+    @wishlist.user = current_user
+    if @wishlist.save
+      flash[:alert] = "Whishlist créée!"
+      redirect_to wishlist_path(@wishlist.id)
+    else
+      flash[:alert] = "Merci de revoir les informations"
+      render new
+    end
   end
-
-  def edit
-    @wishlist = Wishlist.find(params[:id])
-  end
-
-  def update
   end
 
   def show
     @wishlist = Wishlist.find(params[:id])
   end
 
-  def destroy
-    @wishlist = Wishlist.destroy(params[:id])
-  end
+  private
 
+  def wishlist_params
+    params.require(:wishlist).permit(:name)
+  end
 
 end
