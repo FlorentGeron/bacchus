@@ -15,7 +15,6 @@ class WishlistsController < ApplicationController
       render new
     end
   end
-  end
 
   def show
     @wishlist = Wishlist.find(params[:id])
