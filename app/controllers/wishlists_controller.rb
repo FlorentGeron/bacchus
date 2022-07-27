@@ -9,7 +9,7 @@ class WishlistsController < ApplicationController
     @wishlist.user = current_user
     if @wishlist.save
       flash[:alert] = "Whishlist créée!"
-      redirect_to wishlist_path(@wishlist.id)
+      redirect_to wishlist_path(@wishlist)
     else
       flash[:alert] = "Merci de revoir les informations"
       render new

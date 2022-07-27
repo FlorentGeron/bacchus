@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   end
   get 'settings', to: 'pages#settings', as: :settings
   get 'welcome', to: 'pages#welcome', as: :welcome
+  resources :wishlist, only: %i[show new create]
 end
