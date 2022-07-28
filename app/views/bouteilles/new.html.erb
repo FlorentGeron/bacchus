@@ -20,13 +20,6 @@
           <%= f.input :provenance%>
           <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
         </div>
-      <div class ="d-none" data-display-form-target = "revealWishFields">
-          <%=f.input  :date_achat, as: :date, html5: true%>
-          <%=f.input :cave, collection: @caves%>
-          <%= f.input :prix%>
-          <%= f.input :provenance%>
-          <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
-        </div>
       <%end%>
     </div>
     <div data-display-form-target = "createNewCuveeFromExisting">
