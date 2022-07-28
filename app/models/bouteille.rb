@@ -1,7 +1,7 @@
 class Bouteille < ApplicationRecord
   belongs_to :cuvee
-  belongs_to :cave, optional:
-  belongs_to :wishlist
+  belongs_to :cave, optional: true
+  belongs_to :wishlist, optional: true
   has_many :degustations
 
   validates :cuvee_id, :date_achat, :prix, presence: true
