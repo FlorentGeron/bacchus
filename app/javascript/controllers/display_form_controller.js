@@ -23,7 +23,12 @@ export default class extends Controller {
 }
 
   addtocave() {
-   this.revealFieldsTarget.classList.remove("d-none");
+    const url = `${this.formTarget.action}/addtocave`
+    fetch(url, { headers: { 'Accept': 'text/plain' } })
+      .then(response => response.text())
+      .then ((data) => {
+        this.revealFieldsTarget.innerHTML = data;
+      });
    this.createNewCuveeFromExistingTarget.innerHTML = "";
   }
 

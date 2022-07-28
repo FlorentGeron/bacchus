@@ -51,6 +51,14 @@ class BouteillesController < ApplicationController
     end
   end
 
+  def addtocave
+      respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: 'shared/add_bottle_to_cave_form.html'}
+      end
+  end
+
+
   def metrics
     @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).joins(:cave).where("caves.user_id = #{current_user.id}")
     @bouteillesaboire= @bouteilles.where("statut= 'à boire'")
