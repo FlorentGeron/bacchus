@@ -8,7 +8,7 @@
     <div data-display-form-target = "formFiltered">
       <%= simple_form_for(@bouteille) do |f|%>
         <%=f.input :cuvee, label: 'Dernière cuvée créée', collection: @cuveesforsearch, input_html: {:"data-action"=>"input->display-form#proposeyear"}, as: :radio_buttons%>
-        <div class ="d-none" data-display-form-target = "revealFields">
+        <div class ="d-none" data-display-form-target = "revealCaveFields">
           Nombre de bouteilles:
           <input class="form-control string required" type="integer" name="create[number]" id="number_create" />
           <%=f.input  :date_achat, as: :date, html5: true%>
@@ -16,6 +16,13 @@
           <%= f.input :emplacement1 %>
           <%= f.input :emplacement2 %>
           <%= f.input :emplacement3 %>
+          <%= f.input :prix%>
+          <%= f.input :provenance%>
+          <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
+        </div>
+      <div class ="d-none" data-display-form-target = "revealWishFields">
+          <%=f.input  :date_achat, as: :date, html5: true%>
+          <%=f.input :cave, collection: @caves%>
           <%= f.input :prix%>
           <%= f.input :provenance%>
           <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
