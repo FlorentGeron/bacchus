@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["searchInput", "form", "formFiltered", "createNewCuveeFromExisting", "revealCaveFields", "revealWishFields" ]
+  static targets = ["searchInput", "form", "formFiltered", "createNewCuveeFromExisting", "revealFields"]
 
   updatecuvee(e) {
     //console.log(e.currentTarget.value);
@@ -23,12 +23,12 @@ export default class extends Controller {
 }
 
   addtocave() {
-   this.revealCaveFieldsTarget.classList.remove("d-none");
+   this.revealFieldsTarget.classList.remove("d-none");
    this.createNewCuveeFromExistingTarget.innerHTML = "";
   }
 
   addtowishlist() {
-    this.revealWishFieldsTarget.classList.remove("d-none");
+    this.revealFieldsTarget.classList.remove("d-none");
     this.createNewCuveeFromExistingTarget.innerHTML = "";
   }
 
