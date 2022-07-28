@@ -22,9 +22,14 @@ export default class extends Controller {
     });
 }
 
-  nextfields() {
+  addtocave() {
    this.revealFieldsTarget.classList.remove("d-none");
    this.createNewCuveeFromExistingTarget.innerHTML = "";
+  }
+
+  addtowishlist() {
+    this.revealFieldsTarget.classList.remove("d-none");
+    this.createNewCuveeFromExistingTarget.innerHTML = "";
   }
 
 }
