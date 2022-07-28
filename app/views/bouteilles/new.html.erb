@@ -1,6 +1,6 @@
 <div class= "container" data-controller = "display-form">
   <div class="display">
-    <h1>Ajouter des bouteilles à votre cave</h1>
+    <h1>Ajouter des bouteilles</h1>
     Merci de choisir un domaine et une cuvée :
     <%= simple_form_for :search, url: new_bouteille_path, method: "GET", html: { class: 'form-inline', :"data-display-form-target"=> "form" }, remote: true do |f|%>
       <%= f.input :keyword, input_html: {value: "", :"data-action"=>"keyup->display-form#updatecuvee", :"data-display-form-target"=> "searchInput"} %>
