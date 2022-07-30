@@ -71,7 +71,6 @@ class BouteillesController < ApplicationController
   def addtowishlist
     @bouteille = Bouteille.new
     @cuveeref = params[:cuveeref]
-    @wishlist = current_user.wishlists.last
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text { render partial: 'shared/add_bottle_to_wishlist_form.html'}
