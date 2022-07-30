@@ -52,6 +52,7 @@ class BouteillesController < ApplicationController
   end
 
   def addtocave
+      @cuveeref = params[:cuveeref]
       respond_to do |format|
         format.html # Follow regular flow of Rails
         format.text { render partial: 'shared/add_bottle_to_cave_form.html'}

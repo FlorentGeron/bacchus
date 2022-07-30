@@ -22,8 +22,9 @@ export default class extends Controller {
     });
 }
 
-  addtocave() {
-    const url = `${this.formTarget.action}/addtocave`
+  addtocave({params : {cuveeref}}) {
+    console.log(cuveeref)
+    const url = `${this.formTarget.action}/addtocave?cuveeref=${cuveeref}`
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then ((data) => {
