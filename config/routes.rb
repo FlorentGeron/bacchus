@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   resources :degustations, except: %i[new create]
   resources :bouteilles, only: :new do
     get 'renderbuttons', to: 'bouteilles#renderbuttons'
-    get 'addtocave', to: 'bouteilles#addtocave'
-    get 'addtowishlist', to: 'bouteilles#addtowishlist'
+    get 'addtolist', to: 'bouteilles#addtolist'
   end
   get '/bouteilles/metrics', to: 'bouteilles#metrics', as: :metrics
   resources :bouteilles, only: :show do
