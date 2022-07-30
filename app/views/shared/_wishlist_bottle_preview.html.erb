@@ -1,0 +1,32 @@
+<div class="bottle-preview">
+  <div class="title-card">
+    <%=bouteille.cuvee.domaine%>
+    <%= bouteille.cuvee.cuvee%>
+    <%= bouteille.cuvee.annee.year%>
+  </div>
+  <div class="bottle-details">
+    <div class="localisation-fields">
+      <%=bouteille.cuvee.appellation.nom%>
+      <div class="provenance">
+        <%=bouteille.provenance%>
+      </div>
+      <div class="added">
+        Mis de côté le <%=bouteille.updated_at.strftime("%d.%m.%y")%>
+      </div>
+    </div>
+    <div class="buttons-links">
+      <%= link_to edit_bouteille_path(bouteille) do%>
+        <%=image_tag "van-red.png", class:"icon-link"%>
+      <%end%>
+      <%=link_to new_bouteille_degustation_path(bouteille) do%>
+        <%=image_tag "pen_red.png", class:"icon-link"%>
+      <%end%>
+      <%= simple_form_for(bouteille) do |f|%>
+        <%= f.input :statut, label:false, input_html: {:"class" => "d-none", :"value"=> "à boire"} %>
+        <button type="submit" style = "width: auto; background-color: white">
+          <%=image_tag "bottle_export.png", class:"icon-link"%>
+        </button>
+      <%end%>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ class WishlistsController < ApplicationController
 
   def show
     @wishlist = Wishlist.find(params[:id])
+    @bouteilles = @wishlist.bouteilles
   end
 
   private
