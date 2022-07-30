@@ -100,7 +100,7 @@ class BouteillesController < ApplicationController
   private
 
   def bouteille_params
-    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance)
+    params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance, :wishlist)
   end
 
   def create_params
@@ -124,7 +124,12 @@ class BouteillesController < ApplicationController
   def create_bouteille_from_params
     Bouteille.new(
       cuvee: Cuvee.find(bouteille_params[:cuvee].to_i),
+      if bouteilles_params[:cave].present? do
       cave: Cave.find(bouteille_params[:cave].to_i),
+      end
+      if bouteille_params[:wishlist].present? do
+      wishlist: Wishlist.find(),
+      end
       statut: "à boire",
       emplacement1: bouteille_params[:emplacement1],
       emplacement2: bouteille_params[:emplacement2],
