@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :bouteilles, only: :new do
     get 'renderbuttons', to: 'bouteilles#renderbuttons'
     get 'addtocave', to: 'bouteilles#addtocave'
+    get 'addtowishlist', to: 'bouteilles#addtowishlist'
   end
   get '/bouteilles/metrics', to: 'bouteilles#metrics', as: :metrics
   resources :bouteilles, only: :show do

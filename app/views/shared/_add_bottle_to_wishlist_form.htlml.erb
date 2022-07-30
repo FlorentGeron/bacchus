@@ -1,12 +1,7 @@
-
-          <%=f.input  :date_achat, as: :date, html5: true%>
-          <%=f.input :wishlist, collection: current_user.wishlists%>
-          <%= f.input :prix%>
-          <%= f.input :provenance%>
-          <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
-
 <%= simple_form_for(@bouteille) do |f|%>
         <%=f.input :cuvee, as: :hidden, input_html: {:value => "#{@cuveeref}"}%>
+Nombre de bouteilles:
+          <input class="form-control string required" type="integer" name="create[number]" id="number_create" value = 1/>
           <%=f.input  :date_achat, as: :date, html5: true%>
           <%=f.input :cave, collection: @caves%>
           <%= f.input :emplacement1 %>
