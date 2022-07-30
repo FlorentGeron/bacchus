@@ -24,7 +24,7 @@ export default class extends Controller {
 
   addtocave({params : {cuveeref}}) {
     console.log(cuveeref)
-    const url = `${this.formTarget.action}/addtolist?cuveeref=${cuveeref}?save=cave`
+    const url = `${this.formTarget.action}/addtolist?cuveeref=${cuveeref}&save=cave`
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then ((data) => {
@@ -34,7 +34,7 @@ export default class extends Controller {
   }
 
   addtowishlist({params : {cuveeref}}) {
-    const url = `${this.formTarget.action}/addtolist?cuveeref=${cuveeref}?save=wishlist`
+    const url = `${this.formTarget.action}/addtolist?cuveeref=${cuveeref}&save=wishlist`
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then ((data) => {

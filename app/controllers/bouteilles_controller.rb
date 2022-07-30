@@ -62,16 +62,6 @@ class BouteillesController < ApplicationController
     end
   end
 
-  def addtocave
-    @bouteille = Bouteille.new
-    @cuveeref = params[:cuveeref]
-    @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: 'shared/add_bottle_to_cave_form.html'}
-    end
-  end
-
   def addtolist
     @bouteille = Bouteille.new
     @cuveeref = params[:cuveeref]
