@@ -2,6 +2,6 @@
 <%= link_to new_cuvee_path(@cuveeref) do%>
 <button name="button1" class="bacchus-button-filter">Changer l'année</button>
 <%end%>
-<button name="button" class="bacchus-button-filter" data-action="click->display-form#addtocave" data-display-form-cuveeref-param= <%=@cuveeref%> >Ajouter à ma cave</button>
-<button name="button" class="bacchus-button-filter" data-action="click->display-form#addtowishlist" data-display-form-cuveeref-param= <%=@cuveeref%> >Ajouter à ma wishlist</button>
+<button name="button" class="bacchus-button-filter" data-action="click->display-form#addtolist" data-display-form-cuveeref-param= <%=@cuveeref%> data-display-form-save-param = "cave" >Ajouter à ma cave</button>
+<button name="button" class="bacchus-button-filter" data-action="click->display-form#addtolist" data-display-form-cuveeref-param= <%=@cuveeref%> data-display-form-save-param = "wishlist" >Ajouter à ma wishlist</button>
 </div>

@@ -1,6 +1,7 @@
 class BouteillesController < ApplicationController
+  before_action :set_bouteille, except: %i[create edit update]
+
   def new
-    @bouteille = Bouteille.new
     if params[:keyword].present?
       @cuveesforsearch = filter_cuvees.map { |cuvee| ["#{cuvee.domaine} #{cuvee.cuvee} #{cuvee.annee.year}", cuvee.id] }
     else
@@ -26,11 +27,8 @@ class BouteillesController < ApplicationController
     else
       @bouteille = create_bouteille_from_params
       @bouteille.wishlist = current_user.wishlists.last
-      if @bouteille.save
-        redirect_to wishlist_path(current_user.wishlists.last)
-      else
-        flash[:alert] = "ça marche pas"
-      end
+      flash[:alert] = "ça marche pas" unless @bouteille.save
+      redirect_to wishlist_path(current_user.wishlists.last)
     end
   end
 
@@ -63,14 +61,9 @@ class BouteillesController < ApplicationController
   end
 
   def addtolist
-    @bouteille = Bouteille.new
     @cuveeref = params[:cuveeref]
     @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
-    if params[:save] == 'wishlist'
-        @partial = 'shared/add_bottle_to_wishlist_form.html'
-    else
-        @partial = 'shared/add_bottle_to_cave_form.html'
-    end
+    @partial = params[:save] == 'wishlist' ? 'shared/add_bottle_to_wishlist_form.html' : 'shared/add_bottle_to_cave_form.html'
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text { render partial: @partial}
@@ -104,6 +97,10 @@ class BouteillesController < ApplicationController
   end
 
   private
+
+  def set_bouteille
+    @bouteille = Bouteille.new
+  end
 
   def bouteille_params
     params.require(:bouteille).permit(:statut, :cuvee, :cave, :emplacement1, :emplacement2, :emplacement3, :date_achat, :prix, :provenance, :wishlist)

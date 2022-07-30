@@ -22,19 +22,8 @@ export default class extends Controller {
     });
 }
 
-  addtocave({params : {cuveeref}}) {
-    console.log(cuveeref)
-    const url = `${this.formTarget.action}/addtolist?cuveeref=${cuveeref}&save=cave`
-    fetch(url, { headers: { 'Accept': 'text/plain' } })
-      .then(response => response.text())
-      .then ((data) => {
-        this.revealFieldsTarget.innerHTML = data;
-      });
-   this.createNewCuveeFromExistingTarget.innerHTML = "";
-  }
-
-  addtowishlist({params : {cuveeref}}) {
-    const url = `${this.formTarget.action}/addtolist?cuveeref=${cuveeref}&save=wishlist`
+  addtolist({params : {cuveeref, save}}) {
+    const url = `${this.formTarget.action}/addtolist?cuveeref=${cuveeref}&save=${save}`
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then ((data) => {
