@@ -4,3 +4,15 @@
           <%= f.input :prix%>
           <%= f.input :provenance%>
           <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
+
+<%= simple_form_for(@bouteille) do |f|%>
+        <%=f.input :cuvee, as: :hidden, input_html: {:value => "#{@cuveeref}"}%>
+          <%=f.input  :date_achat, as: :date, html5: true%>
+          <%=f.input :cave, collection: @caves%>
+          <%= f.input :emplacement1 %>
+          <%= f.input :emplacement2 %>
+          <%= f.input :emplacement3 %>
+          <%= f.input :prix%>
+          <%= f.input :provenance%>
+          <%= f.button :submit, "Enregistrer", class: "bacchus-button-filter"%>
+<%end%>

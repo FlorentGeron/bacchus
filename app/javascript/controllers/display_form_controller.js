@@ -33,8 +33,13 @@ export default class extends Controller {
    this.createNewCuveeFromExistingTarget.innerHTML = "";
   }
 
-  addtowishlist() {
-    this.revealFieldsTarget.classList.remove("d-none");
+  addtowishlist({params : {cuveeref}}) {
+    const url = `${this.formTarget.action}/addtowishlist?cuveeref=${cuveeref}`
+    fetch(url, { headers: { 'Accept': 'text/plain' } })
+      .then(response => response.text())
+      .then ((data) => {
+        this.revealFieldsTarget.innerHTML = data;
+      });
     this.createNewCuveeFromExistingTarget.innerHTML = "";
   }
 
