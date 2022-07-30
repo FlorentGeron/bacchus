@@ -26,7 +26,11 @@ class BouteillesController < ApplicationController
     else
       @bouteille = create_bouteille_from_params
       @bouteille.wishlist = current_user.wishlists.last
-      @bouteille.save
+      if @bouteille.save
+        redirect_to wishlist_path(current_user.wishlists.last)
+      else
+        flash[:alert] = "ça marche pas"
+      end
     end
   end
 
@@ -68,12 +72,18 @@ class BouteillesController < ApplicationController
     end
   end
 
-  def addtowishlist
+  def addtolist
     @bouteille = Bouteille.new
     @cuveeref = params[:cuveeref]
+    @caves = current_user.caves.map { |cave| [cave.nom, cave.id] }
+    if params[:save] == 'wishlist'
+        @partial = 'shared/add_bottle_to_wishlist_form.html'
+    else
+        @partial = 'shared/add_bottle_to_cave_form.html'
+    end
     respond_to do |format|
       format.html # Follow regular flow of Rails
-      format.text { render partial: 'shared/add_bottle_to_wishlist_form.html'}
+      format.text { render partial: @partial}
     end
   end
 
