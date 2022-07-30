@@ -52,6 +52,7 @@ class BouteillesController < ApplicationController
   end
 
   def addtocave
+      @bouteille = Bouteille.new
       @cuveeref = params[:cuveeref]
       respond_to do |format|
         format.html # Follow regular flow of Rails
