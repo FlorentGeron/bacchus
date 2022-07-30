@@ -15,12 +15,19 @@ class BouteillesController < ApplicationController
   end
 
   def create
-    @number = create_params[:number].to_i
-    @number.times do
+    if params[:create].present?
+      @number = create_params[:number].to_i
+      @number.times do
+        @bouteille = create_bouteille_from_params
+        @bouteille.cave = Cave.find(bouteille_params[:cave].to_i)
+        flash[:alert] = "ça marche pas" unless @bouteille.save
+      end
+      redirect_to cuvees_path
+    else
       @bouteille = create_bouteille_from_params
-      flash[:alert] = "ça marche pas" unless @bouteille.save
+      @bouteille.wishlist = current_user.wishlists.last
+      @bouteille.save
     end
-    redirect_to cuvees_path
   end
 
   def index
@@ -124,12 +131,6 @@ class BouteillesController < ApplicationController
   def create_bouteille_from_params
     Bouteille.new(
       cuvee: Cuvee.find(bouteille_params[:cuvee].to_i),
-      if bouteilles_params[:cave].present? do
-      cave: Cave.find(bouteille_params[:cave].to_i),
-      end
-      if bouteille_params[:wishlist].present? do
-      wishlist: Wishlist.find(),
-      end
       statut: "à boire",
       emplacement1: bouteille_params[:emplacement1],
       emplacement2: bouteille_params[:emplacement2],
