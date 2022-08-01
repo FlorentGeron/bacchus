@@ -16,13 +16,7 @@
     </div>
     <div class="buttons-links">
       <%= link_to edit_bouteille_path(bouteille) do%>
-        <%=image_tag "van-red.png", class:"icon-link"%>
-      <%end%>
-      <%= simple_form_for(bouteille) do |f|%>
-        <%= f.input :statut, label:false, input_html: {:"class" => "d-none", :"value"=> "à boire"} %>
-        <button type="submit" style = "width: auto; background-color: white">
-          <%=image_tag "bottle_export.png", class:"icon-link"%>
-        </button>
+        <%=image_tag "box-red.png", class:"icon-link"%>
       <%end%>
     </div>
   </div>
