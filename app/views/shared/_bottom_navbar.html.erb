@@ -20,5 +20,9 @@
         <%= image_tag 'graph-bar.png', :"class" => "icon-link"%>
         <p class="picture-caption">Statistiques</p>
       <% end %>
+       <%= link_to wishlist_path(current_user.wishlists.last), class: "icon-link-navbar" do %>
+        <%= image_tag 'heart-white.png', :"class" => "icon-link"%>
+        <p class="picture-caption">Wishlist</p>
+      <% end %>
   <% end %>
 </div>
