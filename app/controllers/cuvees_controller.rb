@@ -21,7 +21,6 @@ class CuveesController < ApplicationController
       redirect_to new_bouteille_path
     else
       flash[:alert] = "Oups! Essayez encore..."
-      raise
       render 'new'
     end
   end
