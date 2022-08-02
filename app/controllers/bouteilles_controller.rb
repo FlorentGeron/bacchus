@@ -80,6 +80,24 @@ class BouteillesController < ApplicationController
     end
   end
 
+  def quicksave
+    @cuveeref = Cuvee.find(params[:cuvee_id])
+    @wishlist = current_user.wishlists.last
+    @bouteille = Bouteille.new(
+      cuvee: @cuveeref,
+      statut: "à boire",
+      prix: 0,
+      provenance: "à reprendre",
+      wishlist: @wishlist
+    )
+    if @bouteille.save
+      flash[:alert] = "Ajouté à votre wishlist"
+      redirect_to wishlist_path(@wishlist)
+    else
+      flash[:alert] = "ça ne marche pas"
+    end
+  end
+
   def metrics
     @bouteilles = Bouteille.includes(:cuvee, { cuvee: :appellation }).joins(:cave).where("caves.user_id = #{current_user.id}")
     @bouteillesaboire= @bouteilles.where("statut= 'à boire'")
