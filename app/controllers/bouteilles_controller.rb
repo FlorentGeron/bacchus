@@ -52,6 +52,12 @@ class BouteillesController < ApplicationController
     redirect_to cuvees_path
   end
 
+  def destroy
+    @bouteille = Bouteille.find(params[:id])
+    flash[:alert] = "Bouteille supprimée" if @bouteille.destroy
+    redirect_to wishlist_path(current_user.wishlists.last)
+  end
+
   def renderbuttons
     @cuveeref = params[:cuveeref]
     respond_to do |format|
