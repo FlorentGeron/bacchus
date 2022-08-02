@@ -81,7 +81,7 @@ class BouteillesController < ApplicationController
   end
 
   def quicksave
-    @cuveeref = Cuvee.find(params[:cuvee_id])
+    @cuveeref = Cuvee.find(params[:format])
     @wishlist = current_user.wishlists.last
     @bouteille = Bouteille.new(
       cuvee: @cuveeref,
@@ -90,12 +90,13 @@ class BouteillesController < ApplicationController
       provenance: "à reprendre",
       wishlist: @wishlist
     )
+    raise
     if @bouteille.save
       flash[:alert] = "Ajouté à votre wishlist"
-      redirect_to wishlist_path(@wishlist)
     else
       flash[:alert] = "ça ne marche pas"
     end
+    redirect_to wishlist_path(@wishlist)
   end
 
   def metrics
