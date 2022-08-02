@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :caves
   resources :cuvees
   resources :appellations, only: :index
-  resources :bouteilles, except: %i[show new]
+  resources :bouteilles, except: %i[show new destroy]
   resources :degustations, except: %i[new create]
   resources :bouteilles, only: :new do
     get 'renderbuttons', to: 'bouteilles#renderbuttons'
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :degustations, only: %i[new create]
   # post '/degustations/', to: 'degustations#create', as: :create_degustations
   end
+  delete '/bouteille', to: 'bouteilles#destroy', as: :delete_bouteille
   get 'settings', to: 'pages#settings', as: :settings
   get 'welcome', to: 'pages#welcome', as: :welcome
   resources :wishlists, only: %i[show new create]
