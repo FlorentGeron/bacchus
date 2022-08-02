@@ -19,6 +19,7 @@
       <%else%>
         A déguster entre <%= cuvee.date_deg_min.year%> et <%=cuvee.date_deg_max.year%>
       <%end%>
+      <%= link_to "Ajouter à ma wishlist", quicksave_path(cuvee), method: :post%>
     </div>
     <div class="modal-section">
       <%if cuvee.degustations.joins(:bouteille => :cave).where("caves.user_id = ?", current_user.id).uniq.count > 0 %>

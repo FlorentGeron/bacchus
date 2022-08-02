@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # post '/degustations/', to: 'degustations#create', as: :create_degustations
   end
   delete '/bouteilles/:id', to: 'bouteilles#destroy', as: :delete_bouteille
-  get '/bouteilles/quicksave', to: 'bouteilles#quicksave', as: :quicksave
+  post '/bouteilles/quicksave', to: 'bouteilles#quicksave', as: :quicksave
   get 'settings', to: 'pages#settings', as: :settings
   get 'welcome', to: 'pages#welcome', as: :welcome
   resources :wishlists, only: %i[show new create]
