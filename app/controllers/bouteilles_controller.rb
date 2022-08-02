@@ -1,5 +1,9 @@
 class BouteillesController < ApplicationController
-  before_action :set_bouteille, except: %i[create edit update]
+  before_action :set_bouteille, except: %i[create edit update show]
+
+  def show
+    @bouteille = Bouteille.find(params[:id])
+  end
 
   def new
     if params[:keyword].present?
