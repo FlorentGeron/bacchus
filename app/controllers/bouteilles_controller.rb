@@ -86,11 +86,11 @@ class BouteillesController < ApplicationController
     @bouteille = Bouteille.new(
       cuvee: @cuveeref,
       statut: "à boire",
+      date_achat: Date.today,
       prix: 0,
       provenance: "à reprendre",
       wishlist: @wishlist
     )
-    raise
     if @bouteille.save
       flash[:alert] = "Ajouté à votre wishlist"
     else
